@@ -4,7 +4,7 @@
 > Developed using vue js  + node server.
 
 ## How to run?
-- `npm install`: It will required packages.
+- `npm install`: It will install required packages.
 - `npm run start-prod`: It will start the server.
 -  Open browser with http://localhost:3000/
 
