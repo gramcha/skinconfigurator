@@ -1,87 +1,109 @@
 <template>
 
   <div id="startScreenPanel" class="panel panel-default">
-    <h4 id="startScreenHeader">Start Screen</h4>
+    <!--<h4 id="startScreenHeader">Start Screen</h4>-->
     <div class="panel-body form-horizontal ">
       <div class="form-group">
-        <br>
-        <span><h5>Show Play Button</h5></span>
-        <input type="checkbox" id="showPlayButton" v-model="checkedShowPlayButton">
-        <label for="showPlayButton">{{ checkedShowPlayButton }}</label>
-        <br>
-      </div>
-      <div class="form-group">
-        <span><h5>PromoImageSize</h5></span>
-        <br>
-        <input type="radio" id="defaultPromoImageSize" value="default" v-model="pickedPromoImageSize">
-        <label for="defaultPromoImageSize">default</label>
-        <br>
-        <input type="radio" id="smallPromoImageSize" value="small" v-model="pickedPromoImageSize">
-        <label for="smallPromoImageSize">small</label>
+        <label class="control-label col-sm-6">Show Play Button</label>
+        <span class="col-sm-6">
+        <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
+          <input type="radio" id="showPlayButton" value="true" v-model="checkedShowPlayButton">
+          <label for="showPlayButton">Yes</label> &nbsp;
+          <input type="radio" id="hidePlayButton" value="false" v-model="checkedShowPlayButton">
+          <label for="hidePlayButton">No</label>
+        </span>
+
         <br>
       </div>
 
       <div class="form-group">
-        <br>
-        <span><h5>PlayButtonPosition</h5></span>
-        <br>
-        <input type="radio" id="centerPlayButtonPosition" value="center" v-model="pickedPlayButtonPosition">
-        <label for="centerPlayButtonPosition">center</label>
-        <br>
-        <input type="radio" id="bottomPlayButtonPosition" value="bottom" v-model="pickedPlayButtonPosition">
-        <label for="bottomPlayButtonPosition">bottom</label>
-        <br>
-        <input type="radio" id="leftPlayButtonPosition" value="left" v-model="pickedPlayButtonPosition">
-        <label for="leftPlayButtonPosition">left</label>
-        <br>
-        <input type="radio" id="rightPlayButtonPosition" value="right" v-model="pickedPlayButtonPosition">
-        <label for="rightPlayButtonPosition">right</label>
+        <label class="control-label col-sm-6">Promo Image Size</label>
+
+        <span class="col-sm-6">
+        <input type="radio" id="defaultPromoImageSize" value="default" v-model="pickedPromoImageSize">
+        <label for="defaultPromoImageSize">Default</label> &nbsp;
+        <input type="radio" id="smallPromoImageSize" value="small" v-model="pickedPromoImageSize">
+        <label for="smallPromoImageSize">small</label>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-6">Play Button Position</label>
+
+        <span class="col-sm-6">
+          <select v-model="pickedPlayButtonPosition" style="width:150px;">
+            <option>Center</option>
+            <option>Bottom</option>
+            <option>Left</option>
+            <option>Right</option>
+          </select>
+        </span>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-6">Play Icon Color</label>
+
+        <span class="col-sm-6">
+          <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('playIconStyle')" >{{colorsPlayIcon.hex}}</button>
+            <div class="col-sm-7">
+              <photoshop-picker v-if="showPlayIconColorPicker==true" v-model="colorsPlayIcon" @ok="onOk('playIconStyle')" @cancel="onCancel('playIconStyle')" />
+            </div>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-6">Play Icon Opacity(%)</label>
+
+        <span class="col-sm-6">
+          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 322px;" v-model="sliderIconOpacity"></vue-slider>
+        </span>
+      </div>
+
+      <div class="form-group" style="margin-top: -38px;">
+        <label class="control-label col-sm-6">Show Title</label>
+
+        <span class="col-sm-6">
+        <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
+          <input type="radio" id="showTitle" value="true" v-model="checkedshowTitle">
+          <label for="showPlayButton">Yes</label> &nbsp;
+          <input type="radio" id="hideTitle" value="false" v-model="checkedshowTitle">
+          <label for="hidePlayButton">No</label>
+        </span>
         <br>
       </div>
       <div class="form-group">
-        <label ><h5>Play Icon Color</h5></label>
+        <label class="control-label col-sm-6">Show Description</label>
+
+        <span class="col-sm-6">
+        <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
+          <input type="radio" id="showDescription" value="true" v-model="checkedshowDescription">
+          <label for="showPlayButton">Yes</label> &nbsp;
+          <input type="radio" id="hideDescription" value="false" v-model="checkedshowDescription">
+          <label for="hidePlayButton">No</label>
+        </span>
         <br>
-        <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('playIconStyle')" >{{colorsPlayIcon.hex}}</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-6">Title Font Color</label>
+
+      <span class="col-sm-6">
+        <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('titleFont')" >{{colorsTitleFont.hex}}</button>
         <div class="col-sm-7">
-          <photoshop-picker v-if="showPlayIconColorPicker==true" v-model="colorsPlayIcon" @ok="onOk('playIconStyle')" @cancel="onCancel('playIconStyle')" />
+          <photoshop-picker v-if="showtitleFontColorPicker==true" v-model="colorsTitleFont" @ok="onOk('titleFont')" @cancel="onCancel('titleFont')" />
         </div>
-        <br>
-      </div>
-      <div class="form-group">
-        <label ><h5>Play Icon Opacity(%)</h5></label>
-        <br>
-        <vue-slider v-model="sliderIconOpacity"></vue-slider>
-        <br>
-      </div>
-      <div class="form-group">
-        <span><h5>Show Title</h5></span>
-        <input type="checkbox" id="showTitle" v-model="checkedshowTitle">
-        <label for="showTitle">{{ checkedshowTitle }}</label>
-        <br>
-      </div>
-      <div class="form-group">
-        <span><h5>Show Description</h5></span>
-        <input type="checkbox" id="showDescription" v-model="checkedshowDescription">
-        <label for="showDescription">{{ checkedshowDescription }}</label>
-        <br>
-      </div>
+      </span>
     </div>
+
+
     <div class="form-group">
-      <label ><h5>Title Font Color</h5></label>
-      <br>
-      <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('titleFont')" >{{colorsTitleFont.hex}}</button>
-      <div class="col-sm-7">
-        <photoshop-picker v-if="showtitleFontColorPicker==true" v-model="colorsTitleFont" @ok="onOk('titleFont')" @cancel="onCancel('titleFont')" />
-      </div>
-      <br>
-    </div>
-    <div class="form-group">
-      <label ><h5>Description Font Color</h5></label>
-      <br>
-      <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('descriptionFont')" >{{colorsDescriptionFont.hex}}</button>
-      <div class="col-sm-7">
-        <photoshop-picker v-if="showDescriptionFontColorPicker==true" v-model="colorsDescriptionFont" @ok="onOk('descriptionFont')" @cancel="onCancel('descriptionFont')" />
-      </div>
+      <label class="control-label col-sm-6">Description Font Color</label>
+
+      <span class="col-sm-6">
+        <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('descriptionFont')" >{{colorsDescriptionFont.hex}}</button>
+        <div class="col-sm-7">
+          <photoshop-picker v-if="showDescriptionFontColorPicker==true" v-model="colorsDescriptionFont" @ok="onOk('descriptionFont')" @cancel="onCancel('descriptionFont')" />
+        </div>
+      </span>
       <br>
     </div>
   </div>
