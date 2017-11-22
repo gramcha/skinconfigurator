@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>vue-2-boilerplate</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <script src="http://player.ooyala.com/static/v4/candidate/latest/core.js"></script>
+  <script src="http://player.ooyala.com/static/v4/candidate/latest/video-plugin/main_html5.min.js"></script>
+  <script src="http://player.ooyala.com/static/v4/production/latest/video-plugin/osmf_flash.min.js"></script>
+  <script src="http://player.ooyala.com/static/v4/production/latest/video-plugin/bit_wrapper.min.js"></script>
+  <script src="http://player.ooyala.com/static/v4/candidate/latest/skin-plugin/html5-skin.min.js"></script>
+  <link rel="stylesheet" href="http://player.ooyala.com/static/v4/candidate/latest/skin-plugin/html5-skin.min.css"/>
+  <style>
+    #wrapper {
+      margin-right: 300px;
+    }
+
+    #content {
+      float: left;
+      width: 60%;
+      background-color: #CCF;
+    }
+
+    #sidebar {
+      float: right;
+      width: 400px;
+      margin-right: -50px;
+      background-color: #FFA;
+    }
+
+    #cleared {
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+<div id="wrapper">
+  <div id="content">
+    <div id="app"></div>
+  </div>
+  <div id="sidebar">
+    <div id='container'></div>
+  </div>
+  <div id="cleared"></div>
+</div>
+
+<script>
+  function onCreate(player) {
+    console.log('subscribing to all events');
+    /*
+     * Subscribe to all events:
+     * this allows you to create logic
+     * based on multiple events.
+     */
+    player.mb.subscribe("*", 'all-events', function (eventName) {
+      if (eventName != OO.EVENTS.DOWNLOADING &&
+        eventName != OO.EVENTS.PLAYHEAD_TIME_CHANGED)
+        console.log(eventName);
+      console.log('player state - ' + player.getState());
+    });
+    player.mb.subscribe(OO.EVENTS.ASSET_DIMENSION, 'assetdimension-event', function (eventName, params) {
+      console.log("palyer state before ASSET_DIMENSION " + player.getState());
+      console.log("eventname ", eventName, " -", params);
+    });
+    player.mb.subscribe(OO.EVENTS.BUFFERING, 'buffer-event', function (eventName, url, vid) {
+      console.log("palyer state before buffering " + player.getState());
+      console.log("eventname " + eventName + " url " + url + " vid " + vid);
+    });
+  }
+  var playerParam = {
+    "pcode": "5zb2wxOlZcNCe_HVT3a6cawW298X",
+    "playerBrandingId": "26e2e3c1049c4e70ae08a242638b5c40",
+    'debug': true,
+    "skin": {
+      "config": "//player.ooyala.com/static/v4/production/latest/skin-plugin/skin.json" //https://raw.githubusercontent.com/archieb87/pbq/master/qa/skin-discovery.json"
+    },
+    "enableDebugTools": {
+      "startDebugStateMachine": "all",
+    },
+    onCreate: onCreate
+  };
+  OO.ready(function () {
+    window.pp = OO.Player.create('container', 'RmZW4zcDo6KqkTIhn1LnowEZyUYn5Tb2', playerParam);
+  });
+</script>
+
+<!-- built files will be auto injected -->
+</body>
+</html>
