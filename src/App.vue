@@ -8,8 +8,8 @@
           <start-screen></start-screen>
         </div>
       </tab>
-      <tab name="Second tab">
-        Second tab content
+      <tab name="Pause Screen">
+        <pause-screen></pause-screen>
       </tab>
       <tab name="four tab">
         Third tab content
@@ -28,6 +28,7 @@
 <script>
 
   import StartScreen from '@/components/StartScreen';
+  import PauseScreen from '@/components/PauseScreen';
   import { Tabs, Tab } from 'vue-tabs-component';
 
   export default {
@@ -51,6 +52,7 @@
       StartScreen,
       tabs: Tabs,
       tab: Tab,
+      PauseScreen,
     },
   };
 </script>
