@@ -2,7 +2,7 @@
   <div id="endScreenPanel" class="panel panel-default">
     <div class="panel-body form-horizontal ">
       <div class="form-group">
-        <label class="control-label col-sm-6">Show Replay Button</label>
+        <label class="control-label col-sm-4">Show Replay Button</label>
         <span class="col-sm-6">
           <input type="radio" id="showReplayButton" value="true" v-model="checkedShowReplayButton">
           <label for="showReplayButton">true</label> &nbsp;
@@ -13,7 +13,7 @@
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-6">Replay Icon Color</label>
+        <label class="control-label col-sm-4">Replay Icon Color</label>
 
         <span class="col-sm-6">
           <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('replayIconStyle')" >{{colorsReplayIcon.hex}}</button>
@@ -24,7 +24,7 @@
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-6">Replay Icon Opacity(%)</label>
+        <label class="control-label col-sm-4">Replay Icon Opacity(%)</label>
 
         <span class="col-sm-6">
           <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 322px;" v-model="sliderIconOpacity"></vue-slider>
@@ -32,7 +32,7 @@
       </div>
 
       <div class="form-group" style="margin-top: -38px;">
-        <label class="control-label col-sm-6">Show Title</label>
+        <label class="control-label col-sm-4">Show Title</label>
 
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showReplayButton" v-model="playButton">-->
@@ -44,7 +44,7 @@
         <br>
       </div>
       <div class="form-group">
-        <label class="control-label col-sm-6">Show Description</label>
+        <label class="control-label col-sm-4">Show Description</label>
 
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showReplayButton" v-model="playButton">-->
@@ -58,7 +58,7 @@
     </div>
 
     <div class="form-group">
-      <label class="control-label col-sm-6">Info Panel Position</label>
+      <label class="control-label col-sm-4">Info Panel Position</label>
 
       <span class="col-sm-6">
           <select v-model="infoPanelPosition" style="width:150px;">
@@ -70,7 +70,7 @@
         </span>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-6">Screen to show on End</label>
+      <label class="control-label col-sm-4">Screen to show on End</label>
 
       <span class="col-sm-6">
           <select v-model="screenToShowOnEND" style="width:150px;">

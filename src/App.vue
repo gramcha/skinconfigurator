@@ -3,26 +3,29 @@
     <!--<router-view></router-view>-->
   <div>
     <tabs>
-      <tab name="Start Screen">
-        <div>
-          <start-screen></start-screen>
-        </div>
-      </tab>
-      <tab name="Pause Screen">
-        <pause-screen></pause-screen>
-      </tab>
-      <tab name="End Screen">
-        <end-screen></end-screen>
-      </tab>
-      <tab name="Ad Screen">
-        <ad-screen></ad-screen>
-      </tab>
-      <tab name="Discovery Screen">
-        <discovery-screen></discovery-screen>
-      </tab>
-      <tab name="sub1">
-        <tabs>
-          <tab name="1"></tab>
+      <tab name="place holder"></tab>
+      <tab name="Screens">
+        <tabs name="sub screens">
+          <tab name="Start">
+            <div>
+              <start-screen></start-screen>
+            </div>
+          </tab>
+          <tab name="Pause">
+            <pause-screen></pause-screen>
+          </tab>
+          <tab name="End">
+            <end-screen></end-screen>
+          </tab>
+          <tab name="Ad">
+            <ad-screen></ad-screen>
+          </tab>
+          <tab name="Discovery">
+            <discovery-screen></discovery-screen>
+          </tab>
+          <tab name="Share">
+            <share-screen></share-screen>
+          </tab>
           <tab name="2"></tab>
           <tab name="3"></tab>
         </tabs>
@@ -43,6 +46,7 @@
   import EndScreen from '@/components/EndScreen';
   import AdScreen from '@/components/AdScreen';
   import DiscoveryScreen from '@/components/DiscoveryScreen';
+  import ShareScreen from '@/components/ShareScreen';
   import { Tabs, Tab } from 'vue-tabs-component';
 
   export default {
@@ -70,6 +74,7 @@
       EndScreen,
       AdScreen,
       DiscoveryScreen,
+      ShareScreen,
     },
   };
 </script>

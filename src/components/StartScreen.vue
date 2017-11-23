@@ -4,7 +4,7 @@
     <!--<h4 id="startScreenHeader">Start Screen</h4>-->
     <div class="panel-body form-horizontal ">
       <div class="form-group">
-        <label class="control-label col-sm-6">Show Play Button</label>
+        <label class="control-label col-sm-4">Show Play Button</label>
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
           <input type="radio" id="showPlayButton" value="true" v-model="checkedShowPlayButton">
@@ -17,7 +17,7 @@
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-6">Promo Image Size</label>
+        <label class="control-label col-sm-4">Promo Image Size</label>
 
         <span class="col-sm-6">
         <input type="radio" id="defaultPromoImageSize" value="default" v-model="pickedPromoImageSize">
@@ -28,7 +28,7 @@
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-6">Play Button Position</label>
+        <label class="control-label col-sm-4">Play Button Position</label>
 
         <span class="col-sm-6">
           <select v-model="pickedPlayButtonPosition" style="width:150px;">
@@ -41,7 +41,7 @@
         </span>
       </div>
       <div class="form-group">
-        <label class="control-label col-sm-6">Play Icon Color</label>
+        <label class="control-label col-sm-4">Play Icon Color</label>
 
         <span class="col-sm-6">
           <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('playIconStyle')" >{{colorsPlayIcon.hex}}</button>
@@ -52,7 +52,7 @@
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-6">Play Icon Opacity(%)</label>
+        <label class="control-label col-sm-4">Play Icon Opacity(%)</label>
 
         <span class="col-sm-6">
           <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 322px;" v-model="sliderIconOpacity"></vue-slider>
@@ -60,7 +60,7 @@
       </div>
 
       <div class="form-group" style="margin-top: -38px;">
-        <label class="control-label col-sm-6">Show Title</label>
+        <label class="control-label col-sm-4">Show Title</label>
 
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
@@ -72,7 +72,7 @@
         <br>
       </div>
       <div class="form-group">
-        <label class="control-label col-sm-6">Show Description</label>
+        <label class="control-label col-sm-4">Show Description</label>
 
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
@@ -85,7 +85,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-6">Title Font Color</label>
+      <label class="control-label col-sm-4">Title Font Color</label>
 
       <span class="col-sm-6">
         <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('titleFont')" >{{colorsTitleFont.hex}}</button>
@@ -97,7 +97,7 @@
 
 
     <div class="form-group">
-      <label class="control-label col-sm-6">Description Font Color</label>
+      <label class="control-label col-sm-4">Description Font Color</label>
 
       <span class="col-sm-6">
         <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('descriptionFont')" >{{colorsDescriptionFont.hex}}</button>
@@ -109,7 +109,7 @@
     </div>
 
     <div class="form-group">
-      <label class="control-label col-sm-6">Info Panel Position</label>
+      <label class="control-label col-sm-4">Info Panel Position</label>
 
       <span class="col-sm-6">
           <select v-model="infoPanelPosition" style="width:150px;">
@@ -122,7 +122,7 @@
     </div>
 
     <div class="form-group">
-      <label class="control-label col-sm-6">Show Promo</label>
+      <label class="control-label col-sm-4">Show Promo</label>
 
       <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->

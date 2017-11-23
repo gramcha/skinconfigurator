@@ -1,11 +1,11 @@
 <template>
 
-  <div id="startScreenPanel" class="panel panel-default">
+  <div id="discoveryScreenPanel" class="panel panel-default">
     <!--<h4 id="startScreenHeader">Start Screen</h4>-->
     <div class="panel-body form-horizontal ">
 
       <div class="form-group">
-        <label class="control-label col-sm-6">Panel Title Font Family</label>
+        <label class="control-label col-sm-4">Panel Title Font Family</label>
 
         <span class="col-sm-6">
           <input v-model="panelFontFamily" placeholder="Roboto Condensed">
@@ -13,7 +13,7 @@
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-6">Panel Title Color</label>
+        <label class="control-label col-sm-4">Panel Title Color</label>
 
         <span class="col-sm-6">
           <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('playTitleStyle')" >{{colorsPanelTitle.hex}}</button>
@@ -26,7 +26,7 @@
 
 
     <div class="form-group">
-      <label class="control-label col-sm-6">Content Title Font Family</label>
+      <label class="control-label col-sm-4">Content Title Font Family</label>
 
       <span class="col-sm-6">
           <input v-model="contentFontFamily" placeholder="Roboto Condensed">
@@ -34,7 +34,7 @@
     </div>
 
     <div class="form-group">
-      <label class="control-label col-sm-6">Content Title Color</label>
+      <label class="control-label col-sm-4">Content Title Color</label>
 
       <span class="col-sm-6">
         <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('contentFont')" >{{colorsContentFont.hex}}</button>
@@ -48,7 +48,7 @@
 
 
     <div class="form-group">
-      <label class="control-label col-sm-6">Show CountDown Timer On End Screen</label>
+      <label class="control-label col-sm-4">Show CountDown Timer On End Screen</label>
 
       <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
@@ -60,7 +60,7 @@
       <br>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-6">Count Down Time</label>
+      <label class="control-label col-sm-4">Count Down Time</label>
 
       <span class="col-sm-6">
           <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 322px;" :min=1 :max=60 v-model="sliderCountDownTime"></vue-slider>
