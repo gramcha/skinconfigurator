@@ -17,6 +17,9 @@
       <tab name="Ad Screen">
         <ad-screen></ad-screen>
       </tab>
+      <tab name="Discovery Screen">
+        <discovery-screen></discovery-screen>
+      </tab>
       <tab name="sub1">
         <tabs>
           <tab name="1"></tab>
@@ -39,6 +42,7 @@
   import PauseScreen from '@/components/PauseScreen';
   import EndScreen from '@/components/EndScreen';
   import AdScreen from '@/components/AdScreen';
+  import DiscoveryScreen from '@/components/DiscoveryScreen';
   import { Tabs, Tab } from 'vue-tabs-component';
 
   export default {
@@ -65,6 +69,7 @@
       PauseScreen,
       EndScreen,
       AdScreen,
+      DiscoveryScreen,
     },
   };
 </script>
