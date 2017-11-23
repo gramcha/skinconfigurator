@@ -32,10 +32,11 @@
 
         <span class="col-sm-6">
           <select v-model="pickedPlayButtonPosition" style="width:150px;">
-            <option>Center</option>
-            <option>Bottom</option>
-            <option>Left</option>
-            <option>Right</option>
+            <option>center</option>
+            <option>topLeft</option>
+            <option>topRight</option>
+            <option>bottomLeft</option>
+            <option>bottomRight</option>
           </select>
         </span>
       </div>
@@ -64,9 +65,9 @@
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
           <input type="radio" id="showTitle" value="true" v-model="checkedshowTitle">
-          <label for="showPlayButton">true</label> &nbsp;
+          <label for="showTitle">true</label> &nbsp;
           <input type="radio" id="hideTitle" value="false" v-model="checkedshowTitle">
-          <label for="hidePlayButton">false</label>
+          <label for="hideTitle">false</label>
         </span>
         <br>
       </div>
@@ -76,9 +77,9 @@
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
           <input type="radio" id="showDescription" value="true" v-model="checkedshowDescription">
-          <label for="showPlayButton">true</label> &nbsp;
+          <label for="showDescription">true</label> &nbsp;
           <input type="radio" id="hideDescription" value="false" v-model="checkedshowDescription">
-          <label for="hidePlayButton">false</label>
+          <label for="hideDescription">false</label>
         </span>
         <br>
       </div>
@@ -106,6 +107,33 @@
       </span>
       <br>
     </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-6">Info Panel Position</label>
+
+      <span class="col-sm-6">
+          <select v-model="infoPanelPosition" style="width:150px;">
+            <option>topLeft</option>
+            <option>topRight</option>
+            <option>bottomLeft</option>
+            <option>bottomRight</option>
+          </select>
+        </span>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-6">Show Promo</label>
+
+      <span class="col-sm-6">
+        <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
+          <input type="radio" id="showPromo" value="true" v-model="checkedShowPromo">
+          <label for="showPromo">true</label> &nbsp;
+          <input type="radio" id="hidePromo" value="false" v-model="checkedShowPromo">
+          <label for="hidePromo">false</label>
+        </span>
+      <br>
+    </div>
+
   </div>
 </template>
 <script>
@@ -243,6 +271,8 @@
         showDescriptionFontColorPicker: false,
         checkedshowTitle: true,
         checkedshowDescription: false,
+        infoPanelPosition: 'topLeft',
+        checkedShowPromo: true,
       };
     },
     methods: {
