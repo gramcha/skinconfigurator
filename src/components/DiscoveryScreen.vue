@@ -63,7 +63,7 @@
       <label class="control-label col-sm-4">Count Down Time</label>
 
       <span class="col-sm-6">
-          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 322px;" :min=1 :max=60 v-model="sliderCountDownTime"></vue-slider>
+          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;" :min=1 :max=60 v-model="sliderCountDownTime"></vue-slider>
         </span>
     </div>
   </div>

@@ -26,8 +26,9 @@
           <tab name="Share">
             <share-screen></share-screen>
           </tab>
-          <tab name="2"></tab>
-          <tab name="3"></tab>
+          <tab name="More Options">
+            <more-options-screen></more-options-screen>
+          </tab>
         </tabs>
       </tab>
 
@@ -47,6 +48,7 @@
   import AdScreen from '@/components/AdScreen';
   import DiscoveryScreen from '@/components/DiscoveryScreen';
   import ShareScreen from '@/components/ShareScreen';
+  import MoreOptionsScreen from '@/components/MoreOptionsScreen';
   import { Tabs, Tab } from 'vue-tabs-component';
 
   export default {
@@ -75,6 +77,7 @@
       AdScreen,
       DiscoveryScreen,
       ShareScreen,
+      MoreOptionsScreen,
     },
   };
 </script>

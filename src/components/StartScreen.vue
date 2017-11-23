@@ -55,7 +55,7 @@
         <label class="control-label col-sm-4">Play Icon Opacity(%)</label>
 
         <span class="col-sm-6">
-          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 322px;" v-model="sliderIconOpacity"></vue-slider>
+          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;" v-model="sliderIconOpacity"></vue-slider>
         </span>
       </div>
 
