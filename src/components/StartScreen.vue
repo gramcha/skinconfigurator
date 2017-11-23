@@ -8,9 +8,9 @@
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
           <input type="radio" id="showPlayButton" value="true" v-model="checkedShowPlayButton">
-          <label for="showPlayButton">Yes</label> &nbsp;
+          <label for="showPlayButton">true</label> &nbsp;
           <input type="radio" id="hidePlayButton" value="false" v-model="checkedShowPlayButton">
-          <label for="hidePlayButton">No</label>
+          <label for="hidePlayButton">false</label>
         </span>
 
         <br>
@@ -21,7 +21,7 @@
 
         <span class="col-sm-6">
         <input type="radio" id="defaultPromoImageSize" value="default" v-model="pickedPromoImageSize">
-        <label for="defaultPromoImageSize">Default</label> &nbsp;
+        <label for="defaultPromoImageSize">default</label> &nbsp;
         <input type="radio" id="smallPromoImageSize" value="small" v-model="pickedPromoImageSize">
         <label for="smallPromoImageSize">small</label>
         </span>
@@ -45,7 +45,7 @@
         <span class="col-sm-6">
           <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('playIconStyle')" >{{colorsPlayIcon.hex}}</button>
             <div class="col-sm-7">
-              <photoshop-picker v-if="showPlayIconColorPicker==true" v-model="colorsPlayIcon" @ok="onOk('playIconStyle')" @cancel="onCancel('playIconStyle')" />
+              <photoshop-picker v-if="showPlayIconColorPicker==true" v-model="colorsPlayIcon" @ok="ofalsek('playIconStyle')" @cancel="onCancel('playIconStyle')" />
             </div>
         </span>
       </div>
@@ -54,7 +54,7 @@
         <label class="control-label col-sm-6">Play Icon Opacity(%)</label>
 
         <span class="col-sm-6">
-          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 322px;" v-model="sliderIconOpacity"></vue-slider>
+          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 322px;" v-model="sliderIcofalsepacity"></vue-slider>
         </span>
       </div>
 
@@ -64,9 +64,9 @@
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
           <input type="radio" id="showTitle" value="true" v-model="checkedshowTitle">
-          <label for="showPlayButton">Yes</label> &nbsp;
+          <label for="showPlayButton">true</label> &nbsp;
           <input type="radio" id="hideTitle" value="false" v-model="checkedshowTitle">
-          <label for="hidePlayButton">No</label>
+          <label for="hidePlayButton">false</label>
         </span>
         <br>
       </div>
@@ -76,9 +76,9 @@
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
           <input type="radio" id="showDescription" value="true" v-model="checkedshowDescription">
-          <label for="showPlayButton">Yes</label> &nbsp;
+          <label for="showPlayButton">true</label> &nbsp;
           <input type="radio" id="hideDescription" value="false" v-model="checkedshowDescription">
-          <label for="hidePlayButton">No</label>
+          <label for="hidePlayButton">false</label>
         </span>
         <br>
       </div>
@@ -89,7 +89,7 @@
       <span class="col-sm-6">
         <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('titleFont')" >{{colorsTitleFont.hex}}</button>
         <div class="col-sm-7">
-          <photoshop-picker v-if="showtitleFontColorPicker==true" v-model="colorsTitleFont" @ok="onOk('titleFont')" @cancel="onCancel('titleFont')" />
+          <photoshop-picker v-if="showtitleFontColorPicker==true" v-model="colorsTitleFont" @ok="ofalsek('titleFont')" @cancel="onCancel('titleFont')" />
         </div>
       </span>
     </div>
@@ -101,7 +101,7 @@
       <span class="col-sm-6">
         <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('descriptionFont')" >{{colorsDescriptionFont.hex}}</button>
         <div class="col-sm-7">
-          <photoshop-picker v-if="showDescriptionFontColorPicker==true" v-model="colorsDescriptionFont" @ok="onOk('descriptionFont')" @cancel="onCancel('descriptionFont')" />
+          <photoshop-picker v-if="showDescriptionFontColorPicker==true" v-model="colorsDescriptionFont" @ok="ofalsek('descriptionFont')" @cancel="onCancel('descriptionFont')" />
         </div>
       </span>
       <br>
@@ -234,7 +234,7 @@
         colorsPlayIcon: defaultplayIconStyleColor,
         colorsTitleFont: defaultWhiteColor,
         colorsDescriptionFont: defaultWhiteColor,
-        sliderIconOpacity: 34,
+        sliderIcofalsepacity: 34,
         pickedPromoImageSize: 'small',
         checkedShowPlayButton: true,
         pickedPlayButtonPosition: 'center',
@@ -246,7 +246,7 @@
       };
     },
     methods: {
-      onOk(objName) {
+      ofalsek(objName) {
         switch (objName) {
           case 'titleFont':
             this.showtitleFontColorPicker = false;
@@ -258,7 +258,7 @@
             this.showDescriptionFontColorPicker = false;
             break;
           default:
-            console.log('unknown ui obj');
+            console.log('unkfalsewn ui obj');
         }
       },
       onCancel(objName) {
@@ -273,7 +273,7 @@
             this.showDescriptionFontColorPicker = false;
             break;
           default:
-            console.log('unknown ui obj');
+            console.log('unkfalsewn ui obj');
         }
       },
       displayColorPicker(objName) {
@@ -288,7 +288,7 @@
             this.showDescriptionFontColorPicker = true;
             break;
           default:
-            console.log('unknown ui obj');
+            console.log('unkfalsewn ui obj');
         }
       },
     },
@@ -297,7 +297,7 @@
 <style scoped>
   .button {
     display: inline-block;
-    text-decoration: none;
+    text-decoration: falsene;
     color: #fff;
     font-weight: bold;
     background-color: #538fbe;
