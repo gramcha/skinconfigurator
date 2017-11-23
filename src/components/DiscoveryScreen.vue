@@ -69,25 +69,23 @@
   </div>
 </template>
 <script>
-  //  "startScreen": {
-  //    "promoImageSize": "default",
-  //      "showPlayButton": true,
-  //      "playButtonPosition": "center",
-  //      "playTitleStyle": {
-  //      "color": "#ffffff",
-  //        "opacity": 0.34
-  //    },
-  //    "showTitle": true,
-  //      "showDescription": false,
-  //      "titleFont": {
-  //      "color": "white"
-  //    },
-  //    "contentFont": {
-  //      "color": "white"
-  //    },
-  //    "infoPanelPosition": "topLeft",
-  //      "showPromo": true
-  //  }
+//  "discoveryScreen": {
+//    "panelTitle": {
+//      "titleFont": {
+//        "fontFamily": "Roboto Condensed",
+//          "color": "white"
+//      }
+//    },
+//    "contentTitle": {
+//      "show": true,
+//        "font": {
+//        "fontFamily": "Roboto Condensed",
+//          "color": "white"
+//      }
+//    },
+//    "showCountDownTimerOnEndScreen": true,
+//      "countDownTime": 10
+//  }
 
   import SlotMixin from '@/mixins/slot';
   import { Photoshop } from 'vue-color';
