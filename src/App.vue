@@ -11,12 +11,20 @@
       <tab name="Pause Screen">
         <pause-screen></pause-screen>
       </tab>
-      <tab name="four tab">
-        Third tab content
+      <tab name="End Screen">
+        <end-screen></end-screen>
       </tab>
-      <tab name="Third tab">
-        Third tab content
+      <tab name="Ad Screen">
+        <ad-screen></ad-screen>
       </tab>
+      <tab name="sub1">
+        <tabs>
+          <tab name="1"></tab>
+          <tab name="2"></tab>
+          <tab name="3"></tab>
+        </tabs>
+      </tab>
+
 
     </tabs>
   </div>
@@ -29,6 +37,8 @@
 
   import StartScreen from '@/components/StartScreen';
   import PauseScreen from '@/components/PauseScreen';
+  import EndScreen from '@/components/EndScreen';
+  import AdScreen from '@/components/AdScreen';
   import { Tabs, Tab } from 'vue-tabs-component';
 
   export default {
@@ -53,6 +63,8 @@
       tabs: Tabs,
       tab: Tab,
       PauseScreen,
+      EndScreen,
+      AdScreen,
     },
   };
 </script>
