@@ -36,23 +36,21 @@
   </div>
 </template>
 <script>
-  //  "discoveryScreen": {
-  //    "panelTitle": {
-  //      "titleFont": {
-  //        "fontFamily": "Roboto Condensed",
-  //          "color": "white"
-  //      }
-  //    },
-  //    "contentTitle": {
-  //      "show": true,
-  //        "font": {
-  //        "fontFamily": "Roboto Condensed",
-  //          "color": "white"
-  //      }
-  //    },
-  //    "showCountDownTimerOnEndScreen": true,
-  //      "countDownTime": 10
-  //  }
+//  "shareScreen": {
+//    "shareContent": [
+//      "social",
+//      "embed"
+//    ],
+//      "socialContent": [
+//      "twitter",
+//      "facebook",
+//      "google+",
+//      "email"
+//    ],
+//      "embed": {
+//  "source": ""
+//    }
+//  },
 
   import SlotMixin from '@/mixins/slot';
   import { Photoshop } from 'vue-color';

@@ -55,7 +55,7 @@
         <label class="control-label col-sm-4">Play Icon Opacity(%)</label>
 
         <span class="col-sm-6">
-          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;" v-model="sliderIconOpacity"></vue-slider>
+          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;" v-model="sliderIconOpacity" ></vue-slider>
         </span>
       </div>
 
@@ -83,35 +83,34 @@
         </span>
         <br>
       </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-4">Title Font Color</label>
+      <div class="form-group">
+        <label class="control-label col-sm-4">Title Font Color</label>
 
-      <span class="col-sm-6">
+        <span class="col-sm-6">
         <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('titleFont')" >{{colorsTitleFont.hex}}</button>
         <div class="col-sm-7">
           <photoshop-picker v-if="showtitleFontColorPicker==true" v-model="colorsTitleFont" @ok="onOk('titleFont')" @cancel="onCancel('titleFont')" />
         </div>
       </span>
-    </div>
+      </div>
 
 
-    <div class="form-group">
-      <label class="control-label col-sm-4">Description Font Color</label>
+      <div class="form-group">
+        <label class="control-label col-sm-4">Description Font Color</label>
 
-      <span class="col-sm-6">
+        <span class="col-sm-6">
         <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('descriptionFont')" >{{colorsDescriptionFont.hex}}</button>
         <div class="col-sm-7">
           <photoshop-picker v-if="showDescriptionFontColorPicker==true" v-model="colorsDescriptionFont" @ok="onOk('descriptionFont')" @cancel="onCancel('descriptionFont')" />
         </div>
       </span>
-      <br>
-    </div>
+        <br>
+      </div>
 
-    <div class="form-group">
-      <label class="control-label col-sm-4">Info Panel Position</label>
+      <div class="form-group">
+        <label class="control-label col-sm-4">Info Panel Position</label>
 
-      <span class="col-sm-6">
+        <span class="col-sm-6">
           <select v-model="infoPanelPosition" style="width:150px;">
             <option>topLeft</option>
             <option>topRight</option>
@@ -119,20 +118,22 @@
             <option>bottomRight</option>
           </select>
         </span>
-    </div>
+      </div>
 
-    <div class="form-group">
-      <label class="control-label col-sm-4">Show Promo</label>
+      <div class="form-group">
+        <label class="control-label col-sm-4">Show Promo</label>
 
-      <span class="col-sm-6">
+        <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
           <input type="radio" id="showPromo" value="true" v-model="checkedShowPromo">
           <label for="showPromo">true</label> &nbsp;
           <input type="radio" id="hidePromo" value="false" v-model="checkedShowPromo">
           <label for="hidePromo">false</label>
         </span>
-      <br>
+        <br>
+      </div>
     </div>
+
 
   </div>
 </template>

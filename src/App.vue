@@ -3,7 +3,23 @@
     <!--<router-view></router-view>-->
   <div>
     <tabs>
-      <tab name="place holder"></tab>
+      <tab name="Generic">
+        <tabs name="genric sub">
+          <tab name="General">
+            <general></general>
+          </tab>
+          <tab name="Localization">
+            <localization></localization>
+          </tab>
+          <tab name="Responsive">
+            <responsive></responsive>
+          </tab>
+          <tab name="Closed Captions">
+            <closed-caption-option></closed-caption-option>
+          </tab>
+          <tab name="Up Next"><up-next></up-next></tab>
+        </tabs>
+      </tab>
       <tab name="Screens">
         <tabs name="sub screens">
           <tab name="Start">
@@ -49,7 +65,13 @@
   import DiscoveryScreen from '@/components/DiscoveryScreen';
   import ShareScreen from '@/components/ShareScreen';
   import MoreOptionsScreen from '@/components/MoreOptionsScreen';
+  import General from '@/components/General';
+  import Localization from '@/components/Localization';
+  import Responsive from '@/components/Responsive';
+  import ClosedCaptionOption from '@/components/ClosedCaptionOption';
+  import UpNext from '@/components/UpNext';
   import { Tabs, Tab } from 'vue-tabs-component';
+
 
   export default {
     /**
@@ -69,6 +91,7 @@
       console.log(this.message);
     },
     components: {
+      UpNext,
       StartScreen,
       tabs: Tabs,
       tab: Tab,
@@ -78,6 +101,10 @@
       DiscoveryScreen,
       ShareScreen,
       MoreOptionsScreen,
+      General,
+      Localization,
+      Responsive,
+      ClosedCaptionOption,
     },
   };
 </script>
