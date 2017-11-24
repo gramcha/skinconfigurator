@@ -17,7 +17,12 @@
           <tab name="Closed Captions">
             <closed-caption-option></closed-caption-option>
           </tab>
-          <tab name="Up Next"><up-next></up-next></tab>
+          <tab name="Up Next">
+            <up-next></up-next>
+          </tab>
+          <tab name="Live">
+            <live></live>
+          </tab>
         </tabs>
       </tab>
       <tab name="Screens">
@@ -47,7 +52,13 @@
           </tab>
         </tabs>
       </tab>
-
+      <tab name="Buttons & Icons">
+        <tabs name="sub buttons and icons">
+          <tab name="Buttons">
+            <buttons></buttons>
+          </tab>
+        </tabs>
+      </tab>
 
     </tabs>
   </div>
@@ -70,6 +81,8 @@
   import Responsive from '@/components/Responsive';
   import ClosedCaptionOption from '@/components/ClosedCaptionOption';
   import UpNext from '@/components/UpNext';
+  import Live from '@/components/Live';
+  import Buttons from '@/components/Buttons';
   import { Tabs, Tab } from 'vue-tabs-component';
 
 
@@ -105,6 +118,8 @@
       Localization,
       Responsive,
       ClosedCaptionOption,
+      Live,
+      Buttons,
     },
   };
 </script>

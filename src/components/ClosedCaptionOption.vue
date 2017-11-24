@@ -59,21 +59,22 @@
       <div class="form-group">
         <label class="control-label col-sm-4">textOpacity</label>
         <span class="col-sm-6">
-          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;" v-model="closedCaptionOptions.textOpacity" ></vue-slider>
+          <vue-numeric  v-model="closedCaptionOptions.textOpacity" :min="0" :max="1" v-bind:precision="2" class="col-sm-7"></vue-numeric>
         </span>
         <br>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-4">backgroundOpacity</label>
         <span class="col-sm-6">
-         <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;" v-model="closedCaptionOptions.backgroundOpacity" ></vue-slider>
+
+         <vue-numeric  v-model="closedCaptionOptions.backgroundOpacity" :min="0" :max="1" v-bind:precision="2" class="col-sm-7"></vue-numeric>
         </span>
         <br>
       </div>
       <div class="form-group">
         <label class="control-label col-sm-4">windowOpacity</label>
         <span class="col-sm-6">
-         <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;" v-model="closedCaptionOptions.windowOpacity" ></vue-slider>
+         <vue-numeric  v-model="closedCaptionOptions.windowOpacity" :min="0" :max="1" v-bind:precision="2" class="col-sm-7"></vue-numeric>
         </span>
         <br>
       </div>
@@ -105,7 +106,7 @@
 
   import SlotMixin from '@/mixins/slot';
   import { Photoshop } from 'vue-color';
-  import vueSlider from 'vue-slider-component';
+  import VueNumeric from 'vue-numeric';
 
   const defaultBlackColor = {
     hex: '#000000',
@@ -181,7 +182,7 @@
     computed: {},
     components: {
       'photoshop-picker': Photoshop,
-      vueSlider,
+      VueNumeric,
     },
     data() {
       return {
@@ -192,7 +193,7 @@
           windowColor: defaultBlackColor,
           backgroundColor: defaultBlackColor,
           textOpacity: 1,
-          backgroundOpacity: 60,
+          backgroundOpacity: 0.6,
           windowOpacity: 0,
           fontType: 'Proportional Sans-Serif',
           fontSize: 'Medium',

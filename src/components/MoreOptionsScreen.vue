@@ -3,18 +3,18 @@
     <div class="panel-body form-horizontal ">
 
       <div class="form-group">
-        <label class="control-label col-sm-4">Bright Opacity(%)</label>
+        <label class="control-label col-sm-4">Bright Opacity</label>
 
         <span class="col-sm-6">
-          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;" v-model="sliderBrightOpacity"></vue-slider>
+          <vue-numeric  v-model="moreOptionsScreen.brightOpacity" :min="0" :max="1" v-bind:precision="2" ></vue-numeric>
         </span>
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-4">Dark Opacity(%)</label>
+        <label class="control-label col-sm-4">Dark Opacity</label>
 
         <span class="col-sm-6">
-          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;" v-model="sliderDarkOpacity"></vue-slider>
+          <vue-numeric  v-model="moreOptionsScreen.darkOpacity" :min="0" :max="1" v-bind:precision="2" ></vue-numeric>
         </span>
       </div>
 
@@ -22,7 +22,7 @@
         <label class="control-label col-sm-4">Icon Size</label>
 
         <span class="col-sm-6">
-          <input v-model="iconSize" placeholder="edit me">
+          <vue-numeric  v-model="moreOptionsScreen.iconSize" ></vue-numeric>
         </span>
       </div>
 
@@ -32,9 +32,9 @@
         <label class="control-label col-sm-4">Color</label>
 
         <span class="col-sm-6">
-          <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('color')" >{{colors.hex}}</button>
+          <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('color')" >{{moreOptionsScreen.color.hex}}</button>
             <div class="col-sm-7">
-              <photoshop-picker v-if="showColorPicker==true" v-model="colors" @ok="onOk('color')" @cancel="onCancel('color')" />
+              <photoshop-picker v-if="showColorPicker==true" v-model="moreOptionsScreen.color" @ok="onOk('color')" @cancel="onCancel('color')" />
             </div>
         </span>
       </div>
@@ -43,19 +43,19 @@
         <label class="control-label col-sm-4">Icon Style Active Color</label>
 
         <span class="col-sm-6">
-          <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('activecolor')" >{{activeColors.hex}}</button>
+          <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('activecolor')" >{{moreOptionsScreen.iconStyle.active.color.hex}}</button>
             <div class="col-sm-7">
-              <photoshop-picker v-if="showActiveColorPicker==true" v-model="activeColors" @ok="onOk('activecolor')" @cancel="onCancel('activecolor')" />
+              <photoshop-picker v-if="showActiveColorPicker==true" v-model="moreOptionsScreen.iconStyle.active.color" @ok="onOk('activecolor')" @cancel="onCancel('activecolor')" />
             </div>
         </span>
       </div>
 
 
       <div class="form-group">
-        <label class="control-label col-sm-4">Icon Style Active Color Opacity(%)</label>
+        <label class="control-label col-sm-4">Icon Style Active Color Opacity</label>
 
         <span class="col-sm-6">
-          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;" v-model="sliderActiveOpacity"></vue-slider>
+          <vue-numeric  v-model="moreOptionsScreen.iconStyle.active.opacity" :min="0" :max="1" v-bind:precision="2" ></vue-numeric>
         </span>
       </div>
 
@@ -64,9 +64,9 @@
         <label class="control-label col-sm-4">Icon Style InActive Color</label>
 
         <span class="col-sm-6">
-          <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('inactivecolor')" >{{inactiveColors.hex}}</button>
+          <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('inactivecolor')" >{{moreOptionsScreen.iconStyle.inactive.color.hex}}</button>
             <div class="col-sm-7">
-              <photoshop-picker v-if="showInActiveColorPicker==true" v-model="inactiveColors" @ok="onOk('inactivecolor')" @cancel="onCancel('inactivecolor')" />
+              <photoshop-picker v-if="showInActiveColorPicker==true" v-model="moreOptionsScreen.iconStyle.inactive.color" @ok="onOk('inactivecolor')" @cancel="onCancel('inactivecolor')" />
             </div>
         </span>
       </div>
@@ -75,27 +75,16 @@
         <label class="control-label col-sm-4">Icon Style InActive Color Opacity(%)</label>
 
         <span class="col-sm-6">
-          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;" v-model="sliderInActiveOpacity"></vue-slider>
+          <vue-numeric  v-model="moreOptionsScreen.iconStyle.inactive.opacity" :min="0" :max="1" v-bind:precision="2" ></vue-numeric>
         </span>
       </div>
     </div>
   </div>
 </template>
 <script>
-  //  "endScreen": {
-  //    "screenToShowOnEnd": "discovery",
-  //      "showReplayButton": true,
-  //      "replayIconStyle": {
-  //      "color": "white",
-  //        "opacity": 1
-  //    },
-  //    "showTitle": false,
-  //      "showDescription": false,
-  //      "infoPanelPosition": "topLeft"
-  //  }
   import SlotMixin from '@/mixins/slot';
   import { Photoshop } from 'vue-color';
-  import vueSlider from 'vue-slider-component';
+  import VueNumeric from 'vue-numeric';
 
   const defaultWhiteColor = {
     hex: '#FFFFFF',
@@ -150,23 +139,29 @@
     },
     components: {
       'photoshop-picker': Photoshop,
-      vueSlider,
+      VueNumeric,
     },
     data() {
       return {
-        colors: defaultWhiteColor,
-        activeColors: defaultWhiteColor,
-        inactiveColors: defaultWhiteColor,
-        sliderBrightOpacity: 100,
-        sliderDarkOpacity: 40,
-        iconSize: 30,
+        moreOptionsScreen: {
+          brightOpacity: 1,
+          darkOpacity: 0.4,
+          iconSize: 30,
+          color: defaultWhiteColor,
+          iconStyle: {
+            active: {
+              color: defaultWhiteColor,
+              opacity: 1,
+            },
+            inactive: {
+              color: defaultWhiteColor,
+              opacity: 0.95,
+            },
+          },
+        },
         showColorPicker: false,
         showActiveColorPicker: false,
         showInActiveColorPicker: false,
-        sliderActiveOpacity: 100,
-        sliderInActiveOpacity: 95,
-
-
       };
     },
     methods: {

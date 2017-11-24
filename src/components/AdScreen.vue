@@ -4,9 +4,9 @@
       <div class="form-group">
         <label class="control-label col-sm-6">Show Ad Marquee</label>
         <span class="col-sm-6">
-          <input type="radio" id="showAdMarquee" value="true" v-model="checkedShowAdMarquee">
+          <input type="radio" id="showAdMarquee" value="true" v-model="adScreen.showAdMarquee">
           <label for="showAdMarquee">true</label> &nbsp;
-          <input type="radio" id="hideAdMarquee" value="false" v-model="checkedShowAdMarquee">
+          <input type="radio" id="hideAdMarquee" value="false" v-model="adScreen.showAdMarquee">
           <label for="hideAdMarquee">false</label>
         </span>
         <br>
@@ -15,9 +15,9 @@
       <div class="form-group">
         <label class="control-label col-sm-6">Show Ad Countdown</label>
         <span class="col-sm-6">
-          <input type="radio" id="showAdCountdown" value="true" v-model="checkedShowAdCountdown">
+          <input type="radio" id="showAdCountdown" value="true" v-model="adScreen.showAdCountDown">
           <label for="showAdMarquee">true</label> &nbsp;
-          <input type="radio" id="hideAdCountdown" value="false" v-model="checkedShowAdCountdown">
+          <input type="radio" id="hideAdCountdown" value="false" v-model="adScreen.showAdCountDown">
           <label for="hideAdMarquee">false</label>
         </span>
         <br>
@@ -26,9 +26,9 @@
       <div class="form-group">
         <label class="control-label col-sm-6">Show Control Bar</label>
         <span class="col-sm-6">
-          <input type="radio" id="showControlBar" value="true" v-model="checkedShowControlBar">
+          <input type="radio" id="showControlBar" value="true" v-model="adScreen.showControlBar">
           <label for="showControlBar">true</label> &nbsp;
-          <input type="radio" id="hideControlBar" value="false" v-model="checkedShowControlBar">
+          <input type="radio" id="hideControlBar" value="false" v-model="adScreen.showControlBar">
           <label for="hideControlBar">false</label>
         </span>
         <br>
@@ -84,9 +84,11 @@
     },
     data() {
       return {
-        checkedShowAdMarquee: true,
-        checkedShowAdCountdown: true,
-        checkedShowControlBar: false,
+        adScreen: {
+          showAdMarquee: true,
+          showAdCountDown: true,
+          showControlBar: false,
+        },
       };
     },
     methods: {},

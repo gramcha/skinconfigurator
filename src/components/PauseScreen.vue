@@ -4,9 +4,9 @@
       <div class="form-group">
         <label class="control-label col-sm-4">Show Pause Button</label>
         <span class="col-sm-6">
-          <input type="radio" id="showPauseButton" value="true" v-model="checkedShowPauseButton">
+          <input type="radio" id="showPauseButton" value="true" v-model="pauseScreen.showPauseIcon">
           <label for="showPauseButton">true</label> &nbsp;
-          <input type="radio" id="hidePauseButton" value="false" v-model="checkedShowPauseButton">
+          <input type="radio" id="hidePauseButton" value="false" v-model="pauseScreen.showPauseIcon">
           <label for="hidePauseButton">false</label>
         </span>
         <br>
@@ -15,7 +15,7 @@
         <label class="control-label col-sm-4">Play Button Position</label>
 
         <span class="col-sm-6">
-          <select v-model="pickedPauseButtonPosition" style="width:150px;">
+          <select v-model="pauseScreen.pauseIconPosition" style="width:150px;">
             <option>center</option>
             <option>topLeft</option>
             <option>topRight</option>
@@ -28,29 +28,29 @@
         <label class="control-label col-sm-4">Pause Icon Color</label>
 
         <span class="col-sm-6">
-          <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('pauseIconStyle')" >{{colorsPauseIcon.hex}}</button>
+          <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('pauseIconStyle')" >{{pauseScreen.PauseIconStyle.color.hex}}</button>
             <div class="col-sm-7">
-              <photoshop-picker v-if="showPauseIconColorPicker==true" v-model="colorsPauseIcon" @ok="onOk('pauseIconStyle')" @cancel="onCancel('pauseIconStyle')" />
+              <photoshop-picker v-if="showPauseIconColorPicker==true" v-model="pauseScreen.PauseIconStyle.color" @ok="onOk('pauseIconStyle')" @cancel="onCancel('pauseIconStyle')" />
             </div>
         </span>
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-4">Pause Icon Opacity(%)</label>
+        <label class="control-label col-sm-4">Pause Icon Opacity</label>
 
         <span class="col-sm-6">
-          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;" v-model="sliderIconOpacity"></vue-slider>
+          <vue-numeric  v-model="pauseScreen.PauseIconStyle.opacity" :min="0" :max="1" v-bind:precision="2" ></vue-numeric>
         </span>
       </div>
 
-      <div class="form-group" style="margin-top: -38px;">
+      <div class="form-group">
         <label class="control-label col-sm-4">Show Title</label>
 
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showPauseButton" v-model="playButton">-->
-          <input type="radio" id="showTitle" value="true" v-model="checkedshowTitle">
+          <input type="radio" id="showTitle" value="true" v-model="pauseScreen.showTitle">
           <label for="showTitle">true</label> &nbsp;
-          <input type="radio" id="hideTitle" value="false" v-model="checkedshowTitle">
+          <input type="radio" id="hideTitle" value="false" v-model="pauseScreen.showTitle">
           <label for="hideTitle">false</label>
         </span>
         <br>
@@ -60,9 +60,9 @@
 
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showPauseButton" v-model="playButton">-->
-          <input type="radio" id="showDescription" value="true" v-model="checkedshowDescription">
+          <input type="radio" id="showDescription" value="true" v-model="pauseScreen.showDescription">
           <label for="showDescription">true</label> &nbsp;
-          <input type="radio" id="hideDescription" value="false" v-model="checkedshowDescription">
+          <input type="radio" id="hideDescription" value="false" v-model="pauseScreen.showDescription">
           <label for="hideDescription">false</label>
         </span>
         <br>
@@ -73,7 +73,7 @@
       <label class="control-label col-sm-4">Info Panel Position</label>
 
       <span class="col-sm-6">
-          <select v-model="infoPanelPosition" style="width:150px;">
+          <select v-model="pauseScreen.infoPanelPosition" style="width:150px;">
             <option>topLeft</option>
             <option>topRight</option>
             <option>bottomLeft</option>
@@ -85,7 +85,7 @@
       <label class="control-label col-sm-4">Screen to show on Pause</label>
 
       <span class="col-sm-6">
-          <select v-model="screenToShowOnPause" style="width:150px;">
+          <select v-model="pauseScreen.screenToShowOnPause" style="width:150px;">
             <option>default</option>
             <option>discovery</option>
           </select>
@@ -108,7 +108,7 @@
 //  }
   import SlotMixin from '@/mixins/slot';
   import { Photoshop } from 'vue-color';
-  import vueSlider from 'vue-slider-component';
+  import VueNumeric from 'vue-numeric';
 
   const defaultWhiteColor = {
     hex: '#FFFFFF',
@@ -163,24 +163,28 @@
     },
     components: {
       'photoshop-picker': Photoshop,
-      vueSlider,
+      VueNumeric,
     },
     data() {
       return {
-        colorsPauseIcon: defaultWhiteColor,
-
-        sliderIconOpacity: 100,
-        checkedShowPauseButton: true,
-        pickedPauseButtonPosition: 'center',
+        pauseScreen: {
+          showPauseIcon: true,
+          pauseIconPosition: 'center',
+          PauseIconStyle: {
+            color: defaultWhiteColor,
+            opacity: 100,
+          },
+          showTitle: true,
+          showDescription: true,
+          infoPanelPosition: 'topLeft',
+          screenToShowOnPause: 'default',
+        },
         showPauseIconColorPicker: false,
-        checkedshowTitle: true,
-        checkedshowDescription: false,
-        infoPanelPosition: 'topLeft',
-        screenToShowOnPause: 'default',
       };
     },
     methods: {
       onOk(objName) {
+        console.log(objName);
         switch (objName) {
           case 'pauseIconStyle':
             this.showPauseIconColorPicker = false;

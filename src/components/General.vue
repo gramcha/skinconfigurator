@@ -64,12 +64,11 @@
         </div>
 
         <div class="form-group">
-          <label class="control-label col-sm-4">Transparency(%)</label>
+          <label class="control-label col-sm-4">Transparency</label>
 
           <span class="col-sm-6">
-          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;"
-                      v-model="general.watermark.transparency"></vue-slider>
-        </span>
+            <vue-numeric  v-model="general.watermark.transparency" :min="0" :max="1" v-bind:precision="2" ></vue-numeric>
+          </span>
         </div>
 
         <div class="form-group">
@@ -86,12 +85,11 @@
         </div>
 
         <div class="form-group">
-          <label class="control-label col-sm-4">scaling Percentage</label>
+          <label class="control-label col-sm-4">Scaling Percentage</label>
 
           <span class="col-sm-6">
-          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;"
-                      v-model="general.watermark.scalingPercentage"></vue-slider>
-        </span>
+            <vue-numeric  v-model="general.watermark.scalingPercentage" :min="0" :max="100"></vue-numeric>
+          </span>
         </div>
       </div>
       <div>
@@ -101,8 +99,8 @@
           <label class="control-label col-sm-4">Buffering Spinner Delay</label>
 
           <span class="col-sm-6">
-          <input v-model="general.bufferingSpinnerDelay" placeholder="edit me" class="col-sm-7">
-        </span>
+            <vue-numeric  v-model="general.bufferingSpinnerDelay"></vue-numeric>
+          </span>
         </div>
         <div class="form-group">
           <label class="control-label col-sm-4">Loading Image Url</label>
@@ -128,7 +126,7 @@
   //      "infoPanelPosition": "topLeft"
   //  }
   import SlotMixin from '@/mixins/slot';
-  import vueSlider from 'vue-slider-component';
+  import VueNumeric from 'vue-numeric';
 
 
   export default {
@@ -159,7 +157,7 @@
      */
     computed: {},
     components: {
-      vueSlider,
+      VueNumeric,
     },
     data() {
       return {

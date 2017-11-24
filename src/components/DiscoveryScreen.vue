@@ -8,7 +8,7 @@
         <label class="control-label col-sm-4">Panel Title Font Family</label>
 
         <span class="col-sm-6">
-          <input v-model="panelFontFamily" placeholder="Roboto Condensed">
+          <input v-model="discoveryScreen.panelTitle.titleFont.fontFamily" placeholder="Roboto Condensed">
         </span>
       </div>
 
@@ -16,20 +16,32 @@
         <label class="control-label col-sm-4">Panel Title Color</label>
 
         <span class="col-sm-6">
-          <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('playTitleStyle')" >{{colorsPanelTitle.hex}}</button>
+          <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('playTitleStyle')" >{{discoveryScreen.panelTitle.titleFont.color.hex}}</button>
             <div class="col-sm-7">
-              <photoshop-picker v-if="showPaneltitleFontColorPicker==true" v-model="colorsPanelTitle" @ok="onOk('playTitleStyle')" @cancel="onCancel('playTitleStyle')" />
+              <photoshop-picker v-if="showPaneltitleFontColorPicker==true" v-model="discoveryScreen.panelTitle.titleFont.color" @ok="onOk('playTitleStyle')" @cancel="onCancel('playTitleStyle')" />
             </div>
         </span>
       </div>
     </div>
 
+    <div class="form-group">
+      <label class="control-label col-sm-4">Show Content Title</label>
+
+      <span class="col-sm-6">
+        <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
+          <input type="radio" id="show" value="true" v-model="discoveryScreen.contentTitle.show">
+          <label for="show">true</label> &nbsp;
+          <input type="radio" id="hide" value="false" v-model="discoveryScreen.contentTitle.show">
+          <label for="hide">false</label>
+        </span>
+      <br>
+    </div>
 
     <div class="form-group">
       <label class="control-label col-sm-4">Content Title Font Family</label>
 
       <span class="col-sm-6">
-          <input v-model="contentFontFamily" placeholder="Roboto Condensed">
+          <input v-model="discoveryScreen.contentTitle.font.fontFamily" placeholder="Roboto Condensed">
         </span>
     </div>
 
@@ -37,9 +49,9 @@
       <label class="control-label col-sm-4">Content Title Color</label>
 
       <span class="col-sm-6">
-        <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('contentFont')" >{{colorsContentFont.hex}}</button>
+        <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('contentFont')" >{{discoveryScreen.contentTitle.font.color.hex}}</button>
         <div class="col-sm-7">
-          <photoshop-picker v-if="showContentFontColorPicker==true" v-model="colorsContentFont" @ok="onOk('contentFont')" @cancel="onCancel('contentFont')" />
+          <photoshop-picker v-if="showContentFontColorPicker==true" v-model="discoveryScreen.contentTitle.font.color" @ok="onOk('contentFont')" @cancel="onCancel('contentFont')" />
         </div>
       </span>
       <br>
@@ -52,9 +64,9 @@
 
       <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
-          <input type="radio" id="showCountDown" value="true" v-model="checkedshowCountDownTimerOnEndScreen">
+          <input type="radio" id="showCountDown" value="true" v-model="discoveryScreen.showCountDownTimerOnEndScreen">
           <label for="showCountDown">true</label> &nbsp;
-          <input type="radio" id="hideCountDown" value="false" v-model="checkedshowCountDownTimerOnEndScreen">
+          <input type="radio" id="hideCountDown" value="false" v-model="discoveryScreen.showCountDownTimerOnEndScreen">
           <label for="hideCountDown">false</label>
         </span>
       <br>
@@ -63,33 +75,16 @@
       <label class="control-label col-sm-4">Count Down Time</label>
 
       <span class="col-sm-6">
-          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;" :min=1 :max=60 v-model="sliderCountDownTime"></vue-slider>
-        </span>
+        <vue-numeric  v-model="discoveryScreen.countDownTime"></vue-numeric>
+      </span>
     </div>
   </div>
 </template>
 <script>
-//  "discoveryScreen": {
-//    "panelTitle": {
-//      "titleFont": {
-//        "fontFamily": "Roboto Condensed",
-//          "color": "white"
-//      }
-//    },
-//    "contentTitle": {
-//      "show": true,
-//        "font": {
-//        "fontFamily": "Roboto Condensed",
-//          "color": "white"
-//      }
-//    },
-//    "showCountDownTimerOnEndScreen": true,
-//      "countDownTime": 10
-//  }
 
   import SlotMixin from '@/mixins/slot';
   import { Photoshop } from 'vue-color';
-  import vueSlider from 'vue-slider-component';
+  import VueNumeric from 'vue-numeric';
 
 
   const defaultWhiteColor = {
@@ -145,10 +140,27 @@
     },
     components: {
       'photoshop-picker': Photoshop,
-      vueSlider,
+      VueNumeric,
     },
     data() {
       return {
+        discoveryScreen: {
+          panelTitle: {
+            titleFont: {
+              fontFamily: 'Roboto Condensed',
+              color: defaultWhiteColor,
+            },
+          },
+          contentTitle: {
+            show: true,
+            font: {
+              fontFamily: 'Roboto Condensed',
+              color: defaultWhiteColor,
+            },
+          },
+          showCountDownTimerOnEndScreen: true,
+          countDownTime: 10,
+        },
         colorsPanelTitle: defaultWhiteColor,
         colorsContentFont: defaultWhiteColor,
         showPaneltitleFontColorPicker: false,

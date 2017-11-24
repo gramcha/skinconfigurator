@@ -4,9 +4,9 @@
       <div class="form-group">
         <label class="control-label col-sm-4">Show Replay Button</label>
         <span class="col-sm-6">
-          <input type="radio" id="showReplayButton" value="true" v-model="checkedShowReplayButton">
+          <input type="radio" id="showReplayButton" value="true" v-model="endScreen.showReplayButton">
           <label for="showReplayButton">true</label> &nbsp;
-          <input type="radio" id="hideReplayButton" value="false" v-model="checkedShowReplayButton">
+          <input type="radio" id="hideReplayButton" value="false" v-model="endScreen.showReplayButton">
           <label for="hideReplayButton">false</label>
         </span>
         <br>
@@ -16,29 +16,32 @@
         <label class="control-label col-sm-4">Replay Icon Color</label>
 
         <span class="col-sm-6">
-          <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('replayIconStyle')" >{{colorsReplayIcon.hex}}</button>
+          <button type="button" class="btn btn-outline-primary"
+                  v-on:click="displayColorPicker('replayIconStyle')">{{endScreen.replayIconStyle.color.hex}}</button>
             <div class="col-sm-7">
-              <photoshop-picker v-if="showReplayIconColorPicker==true" v-model="colorsReplayIcon" @ok="onOk('replayIconStyle')" @cancel="onCancel('replayIconStyle')" />
+              <photoshop-picker v-if="showReplayIconColorPicker==true" v-model="endScreen.replayIconStyle.color"
+                                @ok="onOk('replayIconStyle')" @cancel="onCancel('replayIconStyle')"/>
             </div>
         </span>
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-4">Replay Icon Opacity(%)</label>
+        <label class="control-label col-sm-4">Replay Icon Opacity</label>
 
         <span class="col-sm-6">
-          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;" v-model="sliderIconOpacity"></vue-slider>
+          <vue-numeric  v-model="endScreen.replayIconStyle.opacity" :min="0" :max="1" v-bind:precision="2" ></vue-numeric>
         </span>
+        <br>
       </div>
 
-      <div class="form-group" style="margin-top: -38px;">
+      <div class="form-group" >
         <label class="control-label col-sm-4">Show Title</label>
 
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showReplayButton" v-model="playButton">-->
-          <input type="radio" id="showTitle" value="true" v-model="checkedshowTitle">
+          <input type="radio" id="showTitle" value="true" v-model="endScreen.showTitle">
           <label for="showTitle">true</label> &nbsp;
-          <input type="radio" id="hideTitle" value="false" v-model="checkedshowTitle">
+          <input type="radio" id="hideTitle" value="false" v-model="endScreen.showTitle">
           <label for="hideTitle">false</label>
         </span>
         <br>
@@ -48,54 +51,46 @@
 
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showReplayButton" v-model="playButton">-->
-          <input type="radio" id="showDescription" value="true" v-model="checkedshowDescription">
+          <input type="radio" id="showDescription" value="true" v-model="endScreen.showDescription">
           <label for="showDescription">true</label> &nbsp;
-          <input type="radio" id="hideDescription" value="false" v-model="checkedshowDescription">
+          <input type="radio" id="hideDescription" value="false" v-model="endScreen.infoPanelPosition">
           <label for="hideDescription">false</label>
         </span>
         <br>
       </div>
-    </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4">Info Panel Position</label>
 
-    <div class="form-group">
-      <label class="control-label col-sm-4">Info Panel Position</label>
-
-      <span class="col-sm-6">
-          <select v-model="infoPanelPosition" style="width:150px;">
+        <span class="col-sm-6">
+          <select v-model="endScreen.infoPanelPosition" style="width:150px;">
             <option>topLeft</option>
             <option>topRight</option>
             <option>bottomLeft</option>
             <option>bottomRight</option>
           </select>
         </span>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-4">Screen to show on End</label>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4">Screen to show on End</label>
 
-      <span class="col-sm-6">
-          <select v-model="screenToShowOnEND" style="width:150px;">
+        <span class="col-sm-6">
+          <select v-model="endScreen.screenToShowOnEnd" style="width:150px;">
             <option>default</option>
             <option>discovery</option>
           </select>
         </span>
+      </div>
     </div>
+
+
   </div>
 </template>
 <script>
-//  "endScreen": {
-//    "screenToShowOnEnd": "discovery",
-//      "showReplayButton": true,
-//      "replayIconStyle": {
-//      "color": "white",
-//        "opacity": 1
-//    },
-//    "showTitle": false,
-//      "showDescription": false,
-//      "infoPanelPosition": "topLeft"
-//  }
+
   import SlotMixin from '@/mixins/slot';
   import { Photoshop } from 'vue-color';
   import vueSlider from 'vue-slider-component';
+  import VueNumeric from 'vue-numeric';
 
   const defaultWhiteColor = {
     hex: '#FFFFFF',
@@ -146,24 +141,28 @@
     /**
      * The computed properties that the component can use.
      */
-    computed: {
-    },
+    computed: {},
     components: {
       'photoshop-picker': Photoshop,
       vueSlider,
+      VueNumeric,
     },
     data() {
       return {
-        colorsReplayIcon: defaultWhiteColor,
-
-        sliderIconOpacity: 100,
-        checkedShowReplayButton: true,
-        pickedPauseButtonPosition: 'center',
+        endScreen: {
+          screenToShowOnEnd: 'discovery',
+          showReplayButton: true,
+          replayIconStyle: {
+            color: defaultWhiteColor,
+            opacity: 1,
+          },
+          showTitle: false,
+          showDescription: false,
+          infoPanelPosition: 'topLeft',
+        },
         showReplayIconColorPicker: false,
-        checkedshowTitle: true,
-        checkedshowDescription: false,
-        infoPanelPosition: 'topLeft',
-        screenToShowOnEND: 'discovery',
+        sliderIconOpacity: 100,
+
       };
     },
     methods: {

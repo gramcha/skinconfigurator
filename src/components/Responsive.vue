@@ -1,9 +1,6 @@
 <template>
   <div id="responsivePanel" class="panel panel-default">
     <div class="panel-body form-horizontal ">
-
-
-
       <legend>Breakpoints</legend>
       <br>
       <div class="form-group" style="border-style: solid; border-color:lightgrey">
@@ -19,15 +16,15 @@
         </span>
         <label class="control-label col-sm-4">Min Width</label>
         <span class="col-sm-6">
-          <input v-model="responsive.breakpoints.xs.minWidth" placeholder="edit me" class="col-sm-7">
+          <vue-numeric  v-model="responsive.breakpoints.xs.minWidth" class="col-sm-7"></vue-numeric>
         </span>
         <label class="control-label col-sm-4">Max Width</label>
         <span class="col-sm-6">
-          <input v-model="responsive.breakpoints.xs.maxWidth" placeholder="edit me" class="col-sm-7">
+          <vue-numeric  v-model="responsive.breakpoints.xs.maxWidth" class="col-sm-7"></vue-numeric>
         </span>
         <label class="control-label col-sm-4">Multiplier</label>
         <span class="col-sm-6">
-          <input v-model="responsive.breakpoints.xs.multiplier" placeholder="edit me" class="col-sm-7">
+          <vue-numeric  v-model="responsive.breakpoints.xs.multiplier" class="col-sm-7"></vue-numeric>
         </span>
       </div>
       <br>
@@ -44,15 +41,15 @@
         </span>
         <label class="control-label col-sm-4">Min Width</label>
         <span class="col-sm-6">
-          <input v-model="responsive.breakpoints.sm.minWidth" placeholder="edit me" class="col-sm-7">
+          <vue-numeric  v-model="responsive.breakpoints.sm.minWidth" class="col-sm-7"></vue-numeric>
         </span>
         <label class="control-label col-sm-4">Max Width</label>
         <span class="col-sm-6">
-          <input v-model="responsive.breakpoints.sm.maxWidth" placeholder="edit me" class="col-sm-7">
+          <vue-numeric  v-model="responsive.breakpoints.sm.maxWidth" class="col-sm-7"></vue-numeric>
         </span>
         <label class="control-label col-sm-4">Multiplier</label>
         <span class="col-sm-6">
-          <input v-model="responsive.breakpoints.sm.multiplier" placeholder="edit me" class="col-sm-7">
+          <vue-numeric  v-model="responsive.breakpoints.sm.multiplier" class="col-sm-7"></vue-numeric>
         </span>
       </div>
       <br>
@@ -69,15 +66,15 @@
         </span>
         <label class="control-label col-sm-4">Min Width</label>
         <span class="col-sm-6">
-          <input v-model="responsive.breakpoints.md.minWidth" placeholder="edit me" class="col-sm-7">
+          <vue-numeric  v-model="responsive.breakpoints.md.minWidth" class="col-sm-7"></vue-numeric>
         </span>
         <label class="control-label col-sm-4">Max Width</label>
         <span class="col-sm-6">
-          <input v-model="responsive.breakpoints.md.maxWidth" placeholder="edit me" class="col-sm-7">
+          <vue-numeric  v-model="responsive.breakpoints.md.maxWidth" class="col-sm-7"></vue-numeric>
         </span>
         <label class="control-label col-sm-4">Multiplier</label>
         <span class="col-sm-6">
-          <input v-model="responsive.breakpoints.md.multiplier" placeholder="edit me" class="col-sm-7">
+          <vue-numeric  v-model="responsive.breakpoints.md.multiplier" class="col-sm-7"></vue-numeric>
         </span>
       </div>
       <br>
@@ -94,15 +91,17 @@
         </span>
         <label class="control-label col-sm-4">Min Width</label>
         <span class="col-sm-6">
-          <input v-model="responsive.breakpoints.lg.minWidth" placeholder="edit me" class="col-sm-7">
+          <vue-numeric  v-model="responsive.breakpoints.lg.minWidth" class="col-sm-7"></vue-numeric>
         </span>
         <label class="control-label col-sm-4">Max Width</label>
         <span class="col-sm-6">
-          <input v-model="responsive.breakpoints.lg.maxWidth" placeholder="edit me" class="col-sm-7">
+          <vue-numeric  v-model="responsive.breakpoints.lg.maxWidth" class="col-sm-7"></vue-numeric>
         </span>
         <label class="control-label col-sm-4">Multiplier</label>
         <span class="col-sm-6">
-          <input v-model="responsive.breakpoints.lg.multiplier" placeholder="edit me" class="col-sm-7">
+
+
+          <vue-numeric  v-model="responsive.breakpoints.lg.multiplier" class="col-sm-7"></vue-numeric>
         </span>
       </div>
       <br>
@@ -116,40 +115,8 @@
   </div>
 </template>
 <script>
-
-  //  "responsive": {
-  //    "breakpoints": {
-  //      "xs": {
-  //        "id": "xs",
-  //          "name": "oo-xsmall",
-  //          "maxWidth": 559,
-  //          "multiplier": 0.7
-  //      },
-  //      "sm": {
-  //        "id": "sm",
-  //          "name": "oo-small",
-  //          "minWidth": 560,
-  //          "maxWidth": 839,
-  //          "multiplier": 1
-  //      },
-  //      "md": {
-  //        "id": "md",
-  //          "name": "oo-medium",
-  //          "minWidth": 840,
-  //          "maxWidth": 1279,
-  //          "multiplier": 1
-  //      },
-  //      "lg": {
-  //        "id": "lg",
-  //          "name": "oo-large",
-  //          "minWidth": 1280,
-  //          "multiplier": 1.2
-  //      }
-  //    },
-  //    "aspectRatio": "auto"
-  //  },
   import SlotMixin from '@/mixins/slot';
-
+  import VueNumeric from 'vue-numeric';
 
   export default {
     /**
@@ -178,7 +145,9 @@
      * The computed properties that the component can use.
      */
     computed: {},
-    components: {},
+    components: {
+      VueNumeric,
+    },
     data() {
       return {
         responsive: {

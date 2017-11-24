@@ -7,9 +7,9 @@
         <label class="control-label col-sm-4">Show Play Button</label>
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
-          <input type="radio" id="showPlayButton" value="true" v-model="checkedShowPlayButton">
+          <input type="radio" id="showPlayButton" value="true" v-model="startScreen.showPlayButton">
           <label for="showPlayButton">true</label> &nbsp;
-          <input type="radio" id="hidePlayButton" value="false" v-model="checkedShowPlayButton">
+          <input type="radio" id="hidePlayButton" value="false" v-model="startScreen.showPlayButton">
           <label for="hidePlayButton">false</label>
         </span>
 
@@ -20,9 +20,9 @@
         <label class="control-label col-sm-4">Promo Image Size</label>
 
         <span class="col-sm-6">
-        <input type="radio" id="defaultPromoImageSize" value="default" v-model="pickedPromoImageSize">
+        <input type="radio" id="defaultPromoImageSize" value="default" v-model="startScreen.promoImageSize">
         <label for="defaultPromoImageSize">default</label> &nbsp;
-        <input type="radio" id="smallPromoImageSize" value="small" v-model="pickedPromoImageSize">
+        <input type="radio" id="smallPromoImageSize" value="small" v-model="startScreen.promoImageSize">
         <label for="smallPromoImageSize">small</label>
         </span>
       </div>
@@ -31,7 +31,7 @@
         <label class="control-label col-sm-4">Play Button Position</label>
 
         <span class="col-sm-6">
-          <select v-model="pickedPlayButtonPosition" style="width:150px;">
+          <select v-model="startScreen.playButtonPosition" style="width:150px;">
             <option>center</option>
             <option>topLeft</option>
             <option>topRight</option>
@@ -44,29 +44,29 @@
         <label class="control-label col-sm-4">Play Icon Color</label>
 
         <span class="col-sm-6">
-          <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('playIconStyle')" >{{colorsPlayIcon.hex}}</button>
+          <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('playIconStyle')" >{{startScreen.playIconStyle.color.hex}}</button>
             <div class="col-sm-7">
-              <photoshop-picker v-if="showPlayIconColorPicker==true" v-model="colorsPlayIcon" @ok="onOk('playIconStyle')" @cancel="onCancel('playIconStyle')" />
+              <photoshop-picker v-if="showPlayIconColorPicker==true" v-model="startScreen.playIconStyle.color" @ok="onOk('playIconStyle')" @cancel="onCancel('playIconStyle')" />
             </div>
         </span>
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-4">Play Icon Opacity(%)</label>
+        <label class="control-label col-sm-4">Play Icon Opacity</label>
 
         <span class="col-sm-6">
-          <vue-slider style="width: 300px;top: auto;bottom: 30px;left: 222px;" v-model="sliderIconOpacity" ></vue-slider>
+          <vue-numeric  v-model="startScreen.playIconStyle.opacity" :min="0" :max="1" v-bind:precision="2" ></vue-numeric>
         </span>
       </div>
 
-      <div class="form-group" style="margin-top: -38px;">
+      <div class="form-group">
         <label class="control-label col-sm-4">Show Title</label>
 
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
-          <input type="radio" id="showTitle" value="true" v-model="checkedshowTitle">
+          <input type="radio" id="showTitle" value="true" v-model="startScreen.showTitle">
           <label for="showTitle">true</label> &nbsp;
-          <input type="radio" id="hideTitle" value="false" v-model="checkedshowTitle">
+          <input type="radio" id="hideTitle" value="false" v-model="startScreen.showTitle">
           <label for="hideTitle">false</label>
         </span>
         <br>
@@ -76,9 +76,9 @@
 
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
-          <input type="radio" id="showDescription" value="true" v-model="checkedshowDescription">
+          <input type="radio" id="showDescription" value="true" v-model="startScreen.showDescription">
           <label for="showDescription">true</label> &nbsp;
-          <input type="radio" id="hideDescription" value="false" v-model="checkedshowDescription">
+          <input type="radio" id="hideDescription" value="false" v-model="startScreen.showDescription">
           <label for="hideDescription">false</label>
         </span>
         <br>
@@ -87,9 +87,9 @@
         <label class="control-label col-sm-4">Title Font Color</label>
 
         <span class="col-sm-6">
-        <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('titleFont')" >{{colorsTitleFont.hex}}</button>
+        <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('titleFont')" >{{startScreen.titleFont.color.hex}}</button>
         <div class="col-sm-7">
-          <photoshop-picker v-if="showtitleFontColorPicker==true" v-model="colorsTitleFont" @ok="onOk('titleFont')" @cancel="onCancel('titleFont')" />
+          <photoshop-picker v-if="showtitleFontColorPicker==true" v-model="startScreen.titleFont.color" @ok="onOk('titleFont')" @cancel="onCancel('titleFont')" />
         </div>
       </span>
       </div>
@@ -99,9 +99,9 @@
         <label class="control-label col-sm-4">Description Font Color</label>
 
         <span class="col-sm-6">
-        <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('descriptionFont')" >{{colorsDescriptionFont.hex}}</button>
+        <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('descriptionFont')" >{{startScreen.descriptionFont.color.hex}}</button>
         <div class="col-sm-7">
-          <photoshop-picker v-if="showDescriptionFontColorPicker==true" v-model="colorsDescriptionFont" @ok="onOk('descriptionFont')" @cancel="onCancel('descriptionFont')" />
+          <photoshop-picker v-if="showDescriptionFontColorPicker==true" v-model="startScreen.descriptionFont.color" @ok="onOk('descriptionFont')" @cancel="onCancel('descriptionFont')" />
         </div>
       </span>
         <br>
@@ -111,7 +111,7 @@
         <label class="control-label col-sm-4">Info Panel Position</label>
 
         <span class="col-sm-6">
-          <select v-model="infoPanelPosition" style="width:150px;">
+          <select v-model="startScreen.infoPanelPosition" style="width:150px;">
             <option>topLeft</option>
             <option>topRight</option>
             <option>bottomLeft</option>
@@ -125,9 +125,9 @@
 
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
-          <input type="radio" id="showPromo" value="true" v-model="checkedShowPromo">
+          <input type="radio" id="showPromo" value="true" v-model="startScreen.showPromo">
           <label for="showPromo">true</label> &nbsp;
-          <input type="radio" id="hidePromo" value="false" v-model="checkedShowPromo">
+          <input type="radio" id="hidePromo" value="false" v-model="startScreen.showPromo">
           <label for="hidePromo">false</label>
         </span>
         <br>
@@ -138,29 +138,10 @@
   </div>
 </template>
 <script>
-  //  "startScreen": {
-  //    "promoImageSize": "default",
-  //      "showPlayButton": true,
-  //      "playButtonPosition": "center",
-  //      "playIconStyle": {
-  //      "color": "#ffffff",
-  //        "opacity": 0.34
-  //    },
-  //    "showTitle": true,
-  //      "showDescription": false,
-  //      "titleFont": {
-  //      "color": "white"
-  //    },
-  //    "descriptionFont": {
-  //      "color": "white"
-  //    },
-  //    "infoPanelPosition": "topLeft",
-  //      "showPromo": true
-  //  }
-
   import SlotMixin from '@/mixins/slot';
   import { Photoshop } from 'vue-color';
   import vueSlider from 'vue-slider-component';
+  import VueNumeric from 'vue-numeric';
 
   const defaultplayIconStyleColor = {
     hex: '#194d33',
@@ -239,23 +220,32 @@
     components: {
       'photoshop-picker': Photoshop,
       vueSlider,
+      VueNumeric,
     },
     data() {
       return {
-        colorsPlayIcon: defaultplayIconStyleColor,
-        colorsTitleFont: defaultWhiteColor,
-        colorsDescriptionFont: defaultWhiteColor,
-        sliderIconOpacity: 34,
-        pickedPromoImageSize: 'small',
-        checkedShowPlayButton: true,
-        pickedPlayButtonPosition: 'center',
+        startScreen: {
+          promoImageSize: 'default',
+          showPlayButton: true,
+          playButtonPosition: 'center',
+          playIconStyle: {
+            color: defaultplayIconStyleColor,
+            opacity: 0.34,
+          },
+          showTitle: true,
+          showDescription: false,
+          titleFont: {
+            color: defaultWhiteColor,
+          },
+          descriptionFont: {
+            color: defaultWhiteColor,
+          },
+          infoPanelPosition: 'topLeft',
+          showPromo: true,
+        },
         showPlayIconColorPicker: false,
         showtitleFontColorPicker: false,
         showDescriptionFontColorPicker: false,
-        checkedshowTitle: true,
-        checkedshowDescription: false,
-        infoPanelPosition: 'topLeft',
-        checkedShowPromo: true,
       };
     },
     methods: {

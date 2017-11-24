@@ -40,36 +40,6 @@
   </div>
 </template>
 <script>
-
-  //  "localization": {
-  //    "defaultLanguage": "en",
-  //      "availableLanguageFile": [
-  //      {
-  //        "language": "en",
-  //        "languageFile": "",
-  //        "androidResource": "skin-config/languageFiles/en.json",
-  //        "iosResource": "en"
-  //      },
-  //      {
-  //        "language": "es",
-  //        "languageFile": "",
-  //        "androidResource": "skin-config/languageFiles/es.json",
-  //        "iosResource": "es"
-  //      },
-  //      {
-  //        "language": "zh",
-  //        "languageFile": "",
-  //        "androidResource": "skin-config/languageFiles/zh.json",
-  //        "iosResource": "zh"
-  //      },
-  //      {
-  //        "language": "ja",
-  //        "languageFile": "",
-  //        "androidResource": "skin-config/languageFiles/ja.json",
-  //        "iosResource": "ja"
-  //      }
-  //    ]
-  //  },
   import SlotMixin from '@/mixins/slot';
   import vueSlider from 'vue-slider-component';
 
