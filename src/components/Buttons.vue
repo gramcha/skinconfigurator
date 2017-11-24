@@ -4,12 +4,13 @@
       <div>
         <legend>Desktop Content</legend>
         <br>
-        <div v-for="item in buttons.desktopContent" class="form-group" style="border-style: solid; border-color:lightgrey">
+        <div v-for="(item, index) in buttons.desktopContent" class="form-group"
+             style="border-style: solid; border-color:lightgrey">
           <br>
           <label class="control-label col-sm-4">Name</label>
           <span class="col-sm-6">
-          <input v-model="item.name" placeholder="edit me" class="col-sm-7">
-        </span>
+            <input v-model="item.name" placeholder="edit me" class="col-sm-7">
+          </span>
           <label class="control-label col-sm-4">Location</label>
           <span class="col-sm-6">
           <input v-model="item.location" placeholder="edit me" class="col-sm-7">
@@ -25,8 +26,14 @@
           <br>
           <label class="control-label col-sm-4">Min Width</label>
           <span class="col-sm-6">
-          <vue-numeric  v-model="item.minWidth" class="col-sm-7"></vue-numeric>
+          <vue-numeric v-model="item.minWidth" class="col-sm-7"></vue-numeric>
         </span>
+          <div id="parent">
+            <div id="child1" class="block center">
+              <button v-on:click="removeButton(index,buttons.desktopContent)">Remove this</button>
+            </div>
+          </div>
+
         </div>
         <br>
       </div>
@@ -34,7 +41,7 @@
       <div>
         <legend>Desktop Ad</legend>
         <br>
-        <div v-for="item in buttons.desktopAd" class="form-group" style="border-style: solid; border-color:lightgrey">
+        <div v-for="(item, index) in buttons.desktopAd" class="form-group" style="border-style: solid; border-color:lightgrey">
           <br>
           <label class="control-label col-sm-4">Name</label>
           <span class="col-sm-6">
@@ -57,6 +64,11 @@
           <span class="col-sm-6">
           <vue-numeric  v-model="item.minWidth" class="col-sm-7"></vue-numeric>
         </span>
+          <div >
+            <div class="block center">
+              <button v-on:click="removeButton(index,buttons.desktopAd)">Remove this</button>
+            </div>
+          </div>
         </div>
         <br>
       </div>
@@ -64,7 +76,7 @@
       <div>
         <legend>Mobile Content</legend>
         <br>
-        <div v-for="item in buttons.mobileContent" class="form-group" style="border-style: solid; border-color:lightgrey">
+        <div v-for="(item, index) in buttons.mobileContent" class="form-group" style="border-style: solid; border-color:lightgrey">
           <br>
           <label class="control-label col-sm-4">Name</label>
           <span class="col-sm-6">
@@ -87,6 +99,11 @@
           <span class="col-sm-6">
           <vue-numeric  v-model="item.minWidth" class="col-sm-7"></vue-numeric>
         </span>
+          <div >
+            <div class="block center">
+              <button v-on:click="removeButton(index,buttons.mobileContent)">Remove this</button>
+            </div>
+          </div>
         </div>
         <br>
       </div>
@@ -94,7 +111,7 @@
       <div>
         <legend>Mobile Ad</legend>
         <br>
-        <div v-for="item in buttons.mobileAd" class="form-group" style="border-style: solid; border-color:lightgrey">
+        <div v-for="(item, index) in buttons.mobileAd" class="form-group" style="border-style: solid; border-color:lightgrey">
           <br>
           <label class="control-label col-sm-4">Name</label>
           <span class="col-sm-6">
@@ -117,6 +134,11 @@
           <span class="col-sm-6">
           <vue-numeric  v-model="item.minWidth" class="col-sm-7"></vue-numeric>
         </span>
+          <div >
+            <div class="block center">
+              <button v-on:click="removeButton(index,buttons.mobileAd)">Remove this</button>
+            </div>
+          </div>
         </div>
         <br>
       </div>
@@ -352,9 +374,32 @@
         },
       };
     },
-    methods: {},
+    methods: {
+      removeButton(index, arrayList) {
+        arrayList.splice(index, 1);
+      },
+    },
   };
 </script>
 <style scoped>
-
+  #parent {
+    text-align:center;
+  }
+  .block {
+    height:32px;
+    width:110px;
+    text-align:left;
+  }
+  .center {
+    margin:auto;
+    /*background-color:green;*/
+  }
+  .left {
+    margin:auto auto auto 0;
+    /*background-color:red;*/
+  }
+  .right {
+    margin:auto 0 auto auto;
+    /*background-color:yellow;*/
+  }
 </style>
