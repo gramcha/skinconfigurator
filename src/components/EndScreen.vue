@@ -91,6 +91,8 @@
   import { Photoshop } from 'vue-color';
   import vueSlider from 'vue-slider-component';
   import VueNumeric from 'vue-numeric';
+  import EventBus from '@/GlobelEventBus/EventBus';
+  import ColorCode from '@/utils/ColorCode';
 
   const defaultWhiteColor = {
     hex: '#FFFFFF',
@@ -142,6 +144,31 @@
      * The computed properties that the component can use.
      */
     computed: {},
+    created() {
+      function encodeToColorPickerObject() {
+        if (this.endScreen.replayIconStyle.color &&
+          typeof this.endScreen.replayIconStyle.color === 'string') {
+          if (this.endScreen.replayIconStyle.color.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(this.endScreen.replayIconStyle.color);
+            this.endScreen.replayIconStyle.color = { hex: hexcode };
+            window.baseSkinInstance.endScreen.replayIconStyle.color =
+              this.endScreen.replayIconStyle.color;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(this.endScreen.replayIconStyle.color);
+            this.endScreen.replayIconStyle.color = { hex: hexcode };
+            window.baseSkinInstance.endScreen.replayIconStyle.color =
+              this.endScreen.replayIconStyle.color;
+          }
+        }
+      }
+
+      EventBus.$on('skin-loaded', () => {
+        console.log('skin-loaded event fired');
+        this.endScreen = window.baseSkinInstance.endScreen;
+
+        encodeToColorPickerObject.call(this);
+      });
+    },
     components: {
       'photoshop-picker': Photoshop,
       vueSlider,

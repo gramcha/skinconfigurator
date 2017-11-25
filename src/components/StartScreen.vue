@@ -142,6 +142,8 @@
   import { Photoshop } from 'vue-color';
   import vueSlider from 'vue-slider-component';
   import VueNumeric from 'vue-numeric';
+  import EventBus from '@/GlobelEventBus/EventBus';
+  import ColorCode from '@/utils/ColorCode';
 
   const defaultplayIconStyleColor = {
     hex: '#194d33',
@@ -216,6 +218,61 @@
      * The computed properties that the component can use.
      */
     computed: {
+    },
+    created() {
+      function encodeToColorPickerObject() {
+        if (this.startScreen.playIconStyle.color &&
+          typeof this.startScreen.playIconStyle.color === 'string') {
+          if (this.startScreen.playIconStyle.color.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(this.startScreen.playIconStyle.color);
+            this.startScreen.playIconStyle.color = { hex: hexcode };
+            window.baseSkinInstance.startScreen.playIconStyle.color =
+              this.startScreen.playIconStyle.color;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(this.startScreen.playIconStyle.color);
+            this.startScreen.playIconStyle.color = { hex: hexcode };
+            window.baseSkinInstance.startScreen.playIconStyle.color =
+              this.startScreen.playIconStyle.color;
+          }
+        }
+
+        if (this.startScreen.titleFont.color &&
+          typeof this.startScreen.titleFont.color === 'string') {
+          if (this.startScreen.titleFont.color.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(this.startScreen.titleFont.color);
+            this.startScreen.titleFont.color = { hex: hexcode };
+            window.baseSkinInstance.startScreen.titleFont.color =
+              this.startScreen.titleFont.color;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(this.startScreen.titleFont.color);
+            this.startScreen.titleFont.color = { hex: hexcode };
+            window.baseSkinInstance.startScreen.titleFont.color =
+              this.startScreen.titleFont.color;
+          }
+        }
+
+        if (this.startScreen.descriptionFont.color &&
+          typeof this.startScreen.descriptionFont.color === 'string') {
+          if (this.startScreen.descriptionFont.color.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(this.startScreen.descriptionFont.color);
+            this.startScreen.descriptionFont.color = { hex: hexcode };
+            window.baseSkinInstance.startScreen.descriptionFont.color =
+              this.startScreen.descriptionFont.color;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(this.startScreen.descriptionFont.color);
+            this.startScreen.descriptionFont.color = { hex: hexcode };
+            window.baseSkinInstance.startScreen.descriptionFont.color =
+              this.startScreen.descriptionFont.color;
+          }
+        }
+      }
+
+      EventBus.$on('skin-loaded', () => {
+        console.log('skin-loaded event fired');
+        this.startScreen = window.baseSkinInstance.startScreen;
+
+        encodeToColorPickerObject.call(this);
+      });
     },
     components: {
       'photoshop-picker': Photoshop,

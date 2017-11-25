@@ -94,21 +94,11 @@
   </div>
 </template>
 <script>
-//  "pauseScreen": {
-//    "showPauseIcon": true,
-//      "pauseIconPosition": "center",
-//      "PauseIconStyle": {
-//      "color": "white",
-//        "opacity": 1
-//    },
-//    "showTitle": true,
-//      "showDescription": true,
-//      "infoPanelPosition": "topLeft",
-//      "screenToShowOnPause": "default"
-//  }
   import SlotMixin from '@/mixins/slot';
   import { Photoshop } from 'vue-color';
   import VueNumeric from 'vue-numeric';
+  import EventBus from '@/GlobelEventBus/EventBus';
+  import ColorCode from '@/utils/ColorCode';
 
   const defaultWhiteColor = {
     hex: '#FFFFFF',
@@ -160,6 +150,30 @@
      * The computed properties that the component can use.
      */
     computed: {
+    },
+    created() {
+      function encodeToColorPickerObject() {
+        if (this.pauseScreen.PauseIconStyle.color &&
+          typeof this.pauseScreen.PauseIconStyle.color === 'string') {
+          if (this.pauseScreen.PauseIconStyle.color.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(this.pauseScreen.PauseIconStyle.color);
+            this.pauseScreen.PauseIconStyle.color = { hex: hexcode };
+            window.baseSkinInstance.pauseScreen.PauseIconStyle.color =
+              this.pauseScreen.PauseIconStyle.color;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(this.pauseScreen.PauseIconStyle.color);
+            this.pauseScreen.PauseIconStyle.color = { hex: hexcode };
+            window.baseSkinInstance.pauseScreen.PauseIconStyle.color =
+              this.pauseScreen.PauseIconStyle.color;
+          }
+        }
+      }
+      EventBus.$on('skin-loaded', () => {
+        console.log('skin-loaded event fired 2');
+        this.pauseScreen = window.baseSkinInstance.pauseScreen;
+
+        encodeToColorPickerObject.call(this);
+      });
     },
     components: {
       'photoshop-picker': Photoshop,

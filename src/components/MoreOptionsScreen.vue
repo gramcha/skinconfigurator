@@ -85,6 +85,8 @@
   import SlotMixin from '@/mixins/slot';
   import { Photoshop } from 'vue-color';
   import VueNumeric from 'vue-numeric';
+  import EventBus from '@/GlobelEventBus/EventBus';
+  import ColorCode from '@/utils/ColorCode';
 
   const defaultWhiteColor = {
     hex: '#FFFFFF',
@@ -136,6 +138,64 @@
      * The computed properties that the component can use.
      */
     computed: {
+    },
+    created() {
+      function encodeToColorPickerObject() {
+        if (this.moreOptionsScreen.color &&
+          typeof this.moreOptionsScreen.color === 'string') {
+          if (this.moreOptionsScreen.color.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.moreOptionsScreen.color);
+            this.moreOptionsScreen.color = { hex: hexcode };
+            window.baseSkinInstance.moreOptionsScreen.color =
+              this.moreOptionsScreen.color;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.moreOptionsScreen.color);
+            this.moreOptionsScreen.color = { hex: hexcode };
+            window.baseSkinInstance.moreOptionsScreen.color =
+              this.moreOptionsScreen.color;
+          }
+        }
+        if (this.moreOptionsScreen.iconStyle.active.color &&
+          typeof this.moreOptionsScreen.iconStyle.active.color === 'string') {
+          if (this.moreOptionsScreen.iconStyle.active.color.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.moreOptionsScreen.iconStyle.active.color);
+            this.moreOptionsScreen.iconStyle.active.color = { hex: hexcode };
+            window.baseSkinInstance.moreOptionsScreen.iconStyle.active.color =
+              this.moreOptionsScreen.iconStyle.active.color;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.moreOptionsScreen.iconStyle.active.color);
+            this.moreOptionsScreen.iconStyle.active.color = { hex: hexcode };
+            window.baseSkinInstance.moreOptionsScreen.iconStyle.active.color =
+              this.moreOptionsScreen.iconStyle.active.color;
+          }
+        }
+        if (this.moreOptionsScreen.iconStyle.inactive.color &&
+          typeof this.moreOptionsScreen.iconStyle.inactive.color === 'string') {
+          if (this.moreOptionsScreen.iconStyle.inactive.color.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.moreOptionsScreen.iconStyle.inactive.color);
+            this.moreOptionsScreen.iconStyle.inactive.color = { hex: hexcode };
+            window.baseSkinInstance.moreOptionsScreen.iconStyle.inactive.color =
+              this.moreOptionsScreen.iconStyle.inactive.color;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.moreOptionsScreen.iconStyle.inactive.color);
+            this.moreOptionsScreen.iconStyle.inactive.color = { hex: hexcode };
+            window.baseSkinInstance.moreOptionsScreen.iconStyle.inactive.color =
+              this.moreOptionsScreen.iconStyle.inactive.color;
+          }
+        }
+      }
+      EventBus.$on('skin-loaded', () => {
+        console.log('skin-loaded event fired 2');
+        this.moreOptionsScreen = window.baseSkinInstance.moreOptionsScreen;
+
+        encodeToColorPickerObject.call(this);
+      });
     },
     components: {
       'photoshop-picker': Photoshop,

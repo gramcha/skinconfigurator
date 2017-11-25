@@ -85,7 +85,8 @@
   import SlotMixin from '@/mixins/slot';
   import { Photoshop } from 'vue-color';
   import VueNumeric from 'vue-numeric';
-
+  import EventBus from '@/GlobelEventBus/EventBus';
+  import ColorCode from '@/utils/ColorCode';
 
   const defaultWhiteColor = {
     hex: '#FFFFFF',
@@ -137,6 +138,49 @@
      * The computed properties that the component can use.
      */
     computed: {
+    },
+    created() {
+      function encodeToColorPickerObject() {
+        console.log(this.discoveryScreen);
+        if (this.discoveryScreen.panelTitle.titleFont.color &&
+          typeof this.discoveryScreen.panelTitle.titleFont.color === 'string') {
+          if (this.discoveryScreen.panelTitle.titleFont.color.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.discoveryScreen.panelTitle.titleFont.color);
+            this.discoveryScreen.panelTitle.titleFont.color = { hex: hexcode };
+            window.baseSkinInstance.discoveryScreen.panelTitle.titleFont.color =
+              this.discoveryScreen.panelTitle.titleFont.color;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.discoveryScreen.panelTitle.titleFont.color);
+            this.discoveryScreen.panelTitle.titleFont.color = { hex: hexcode };
+            window.baseSkinInstance.discoveryScreen.panelTitle.titleFont.color =
+              this.discoveryScreen.panelTitle.titleFont.color;
+          }
+        }
+        if (this.discoveryScreen.contentTitle.font.color &&
+          typeof this.discoveryScreen.contentTitle.font.color === 'string') {
+          if (this.discoveryScreen.contentTitle.font.color.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.discoveryScreen.contentTitle.font.color);
+            this.discoveryScreen.contentTitle.font.color = { hex: hexcode };
+            window.baseSkinInstance.discoveryScreen.contentTitle.font.color =
+              this.discoveryScreen.contentTitle.font.color;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.discoveryScreen.contentTitle.font.color);
+            this.discoveryScreen.contentTitle.font.color = { hex: hexcode };
+            window.baseSkinInstance.discoveryScreen.contentTitle.font.color =
+              this.discoveryScreen.contentTitle.font.color;
+          }
+        }
+      }
+      EventBus.$on('skin-loaded', () => {
+        console.log('skin-loaded event fired 2');
+        this.discoveryScreen = window.baseSkinInstance.discoveryScreen;
+
+        encodeToColorPickerObject.call(this);
+      });
     },
     components: {
       'photoshop-picker': Photoshop,
