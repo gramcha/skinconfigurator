@@ -3,6 +3,9 @@
     <!--<router-view></router-view>-->
   <div>
     <tabs>
+      <tab name="Home">
+        <home></home>
+      </tab>
       <tab name="Generic">
         <tabs name="genric sub">
           <tab name="General">
@@ -91,6 +94,7 @@
   import Buttons from '@/components/Buttons';
   import Icons from '@/components/Icons';
   import ControlBar from '@/components/ControlBar';
+  import Home from '@/components/Home';
   import { Tabs, Tab } from 'vue-tabs-component';
 
 
@@ -130,6 +134,7 @@
       Buttons,
       Icons,
       ControlBar,
+      Home,
     },
   };
 </script>

@@ -149,6 +149,7 @@
 <script>
   import SlotMixin from '@/mixins/slot';
   import VueNumeric from 'vue-numeric';
+  import EventBus from '@/GlobelEventBus/EventBus';
 
   export default {
     /**
@@ -180,8 +181,18 @@
     components: {
       VueNumeric,
     },
+    created() {
+      EventBus.$on('skin-loaded', () => {
+        console.log('skin-loaded event fired');
+        this.buttons = window.baseSkinInstance.buttons;
+      });
+    },
+    mounted() {
+//      this.button = window.baseSkinInstance.buttons;
+    },
     data() {
       return {
+//        buttons: {},
         buttons: {
           desktopContent: [
             {
