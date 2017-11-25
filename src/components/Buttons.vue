@@ -30,7 +30,7 @@
         </span>
           <div id="parent">
             <div id="child1" class="block center">
-              <button v-on:click="removeButton(index,buttons.desktopContent)">Remove this</button>
+              <button v-on:click="removeButton(index,buttons.desktopContent)">Remove</button>
             </div>
           </div>
 
@@ -66,7 +66,7 @@
         </span>
           <div >
             <div class="block center">
-              <button v-on:click="removeButton(index,buttons.desktopAd)">Remove this</button>
+              <button v-on:click="removeButton(index,buttons.desktopAd)">Remove</button>
             </div>
           </div>
         </div>
@@ -101,7 +101,7 @@
         </span>
           <div >
             <div class="block center">
-              <button v-on:click="removeButton(index,buttons.mobileContent)">Remove this</button>
+              <button v-on:click="removeButton(index,buttons.mobileContent)">Remove</button>
             </div>
           </div>
         </div>
@@ -136,7 +136,7 @@
         </span>
           <div >
             <div class="block center">
-              <button v-on:click="removeButton(index,buttons.mobileAd)">Remove this</button>
+              <button v-on:click="removeButton(index,buttons.mobileAd)">Remove</button>
             </div>
           </div>
         </div>

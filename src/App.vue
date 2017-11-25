@@ -52,10 +52,16 @@
           </tab>
         </tabs>
       </tab>
+      <tab name="ControlBar">
+        <control-bar></control-bar>
+      </tab>
       <tab name="Buttons & Icons">
         <tabs name="sub buttons and icons">
           <tab name="Buttons">
             <buttons></buttons>
+          </tab>
+          <tab name="Icons">
+            <icons></icons>
           </tab>
         </tabs>
       </tab>
@@ -83,6 +89,8 @@
   import UpNext from '@/components/UpNext';
   import Live from '@/components/Live';
   import Buttons from '@/components/Buttons';
+  import Icons from '@/components/Icons';
+  import ControlBar from '@/components/ControlBar';
   import { Tabs, Tab } from 'vue-tabs-component';
 
 
@@ -120,6 +128,8 @@
       ClosedCaptionOption,
       Live,
       Buttons,
+      Icons,
+      ControlBar,
     },
   };
 </script>

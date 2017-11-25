@@ -1,3 +1,5 @@
+/* eslint-disable prefer-template */
+/* eslint-disable no-useless-escape */
 /**
  * Created by gramachandran on 24/11/17.
  */
@@ -154,6 +156,25 @@ function colourNameToHex(colour) {
   return colour;// if match not found return the input
 }
 
-export default {
+
+function toHex(int) {
+  const hex = int.toString(16);
+  return hex.length === 1 ? '0' + hex : hex;
+}
+
+function rgbToHex(color) {
+  const arr = [];
+  color.replace(/[\d+\.]+/g, (v) => {
+    arr.push(parseFloat(v));
+  });
+  return {
+    hex: '#' + arr.slice(0, 3).map(toHex).join(''),
+    opacity: arr.length === 4 ? arr[3] : 1,
+  };
+}
+
+const ColorCode = {
   colourNameToHex,
+  rgbToHex,
 };
+export default ColorCode;
