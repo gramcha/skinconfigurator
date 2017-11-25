@@ -16,8 +16,7 @@
       <div class="form-group">
         <label class="control-label col-sm-4">Time To Show</label>
         <span class="col-sm-6">
-         <input v-model="upNext.timeToShow" placeholder="edit me" class="col-sm-7">
-          <vue-numeric  v-model="upNext.timeToShow" class="col-sm-7"></vue-numeric>
+          <vue-numeric v-model="upNext.timeToShow" class="col-sm-7"></vue-numeric>
         </span>
         <br>
       </div>
@@ -56,9 +55,9 @@
      * The computed properties that the component can use.
      */
     computed: {
-      VueNumeric,
     },
     components: {
+      VueNumeric,
     },
     data() {
       return {

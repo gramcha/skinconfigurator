@@ -134,7 +134,7 @@
           </span>
         </div>
       </div>
-
+      <br>
       <div style="border-style: solid; border-color:lightgrey">
         <legend>Ad Scrubber Bar</legend>
         <div class="form-group">
