@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "GUI application to configure the player skin.json",
   "scripts": {
-    "dev": "npm run clean:build && cross-env NODE_ENV=development webpack-dashboard -c cyan -- nodemon --exec 'node server.js' --watch src/ --watch server.js",
+    "dev": "npm run clean:build && cross-env NODE_ENV=development webpack-dashboard -c cyan -- nodemon --exec 'node server.js' --watch src/ --watch server.js --watch api/",
     "start-prod": "npm run clean:build && npm run build && NODE_ENV=production node server.js ",
     "clean:build": "rimraf dist",
     "build": "node build/build.js",
@@ -17,6 +17,7 @@
   "homepage": "https://github.com/gramcha/vue-2-boilerplate-expressapp#readme",
   "dependencies": {
     "axios": "^0.16.2",
+    "body-parser": "^1.18.2",
     "bootstrap": "4.0.0-beta",
     "ejs": "^2.5.7",
     "font-awesome": "^4.7.0",

@@ -136,5 +136,7 @@
       ControlBar,
       Home,
     },
+    methods: {
+    },
   };
 </script>

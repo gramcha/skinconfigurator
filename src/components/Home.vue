@@ -10,14 +10,25 @@
         <br>
         <button v-on:click="updateBaseSkin">Load</button>
       </div>
+
+      <div class="form-group">
+        <label >Update Player</label>
+        <br>
+        <button v-on:click="updatePlayer">Update Player</button>
+      </div>
     </div>
   </div>
 </template>
 <script>
+  /* eslint-disable no-unused-vars */
+
 
   import SlotMixin from '@/mixins/slot';
   import EventBus from '@/GlobelEventBus/EventBus';
 
+  const postJSON = function (urlpath, data) {
+    return $.ajax({ url: urlpath, data: JSON.stringify(data), type: 'POST', contentType: 'application/json' });
+  };
   export default {
     /**
      * The name of the component.
@@ -63,9 +74,21 @@
           console.log('Event fired from home');
         }
       },
+      updatePlayer() {
+        postJSON('http://localhost:3000/updateplayer/', window.baseSkinInstance)
+          .done((data) => {
+//            do something useful with server returned data
+            console.log(data);
+          })
+          .fail((response, status) => {
+//            handle error response
+          })
+          .always(() => {
+//            do something useful in either case
+//            like remove the spinner
+          });
+      },
     },
   };
 </script>
-<style scoped>
 
-</style>

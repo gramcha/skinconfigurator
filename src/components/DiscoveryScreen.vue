@@ -255,6 +255,3 @@
     },
   };
 </script>
-<style scoped>
-
-</style>

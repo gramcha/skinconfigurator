@@ -868,6 +868,3 @@
     },
   };
 </script>
-<style scoped>
-
-</style>

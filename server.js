@@ -6,10 +6,23 @@ const path = require('path');
 const ejs = require('ejs');
 const devserver = require('./build/dev-server-integration');
 const index = require('./routes/index');
+const updateSkinRoute = require('./api/updateskin');
+const bodyParser = require('body-parser')
 
 const app = express();
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
+app.use('/updateplayer', updateSkinRoute);
 app.get('/ping', (req, res) => res.send('Hello World!'));
+app.post('/ping', (req, res) => {
+  console.log(' skin received --->  ', req.body)
+  res.send('Hello World!');
+});
 console.log(`process env = ${process.env.NODE_ENV}`);
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
 if (process.env.NODE_ENV === 'development') {
