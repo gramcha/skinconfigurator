@@ -39,9 +39,9 @@
         <label class="control-label col-sm-4">Icon Inactive Color</label>
 
         <span class="col-sm-6">
-          <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('iconinactivecolor')" >{{controlBar.iconStyle.inactive.color.hex}}</button>
+          <button type="button" class="btn btn-outline-primary" v-on:click="displayColorPicker('iconInactivecolor')" >{{controlBar.iconStyle.inactive.color.hex}}</button>
             <div class="col-sm-7">
-              <photoshop-picker v-if="showIconInactiveColorPicker==true" v-model="controlBar.iconStyle.inactive.color" @ok="onOk('iconinactivecolor')" @cancel="onCancel('iconinactivecolor')" />
+              <photoshop-picker v-if="showIconInactiveColorPicker==true" v-model="controlBar.iconStyle.inactive.color" @ok="onOk('iconInactivecolor')" @cancel="onCancel('iconInactivecolor')" />
             </div>
         </span>
       </div>
@@ -273,6 +273,8 @@
   import vueSlider from 'vue-slider-component';
   import VueNumeric from 'vue-numeric';
   import ColorCode from '@/utils/ColorCode';
+  import EventBus from '@/GlobelEventBus/EventBus';
+
 
   const defaultVolumeControlColor = {
     hex: '#c100df',
@@ -320,6 +322,95 @@
     a: 1,
   };
 
+  const defaultbgColor = {
+    hex: '#afafaf',
+    hsl: {
+      h: 0,
+      s: 0,
+      l: 69,
+      a: 1,
+    },
+    hsv: {
+      h: 0,
+      s: 0,
+      v: 69,
+      a: 1,
+    },
+    rgba: {
+      r: 175,
+      g: 175,
+      b: 175,
+      a: 1,
+    },
+    a: 1,
+  };
+  const defaultbufferedColor = {
+    hex: '#7f7f7f',
+    hsl: {
+      h: 0,
+      s: 0,
+      l: 50,
+      a: 1,
+    },
+    hsv: {
+      h: 0,
+      s: 0,
+      v: 50,
+      a: 1,
+    },
+    rgba: {
+      r: 127,
+      g: 127,
+      b: 127,
+      a: 1,
+    },
+    a: 1,
+  };
+  const defaultplayedColor = {
+    hex: '#ff3f80',
+    hsl: {
+      h: 94,
+      s: 100,
+      l: 62,
+      a: 1,
+    },
+    hsv: {
+      h: 340,
+      s: 75,
+      v: 100,
+      a: 1,
+    },
+    rgba: {
+      r: 255,
+      g: 63,
+      b: 128,
+      a: 1,
+    },
+    a: 1,
+  };
+  const defaultsbHandleColor = {
+    hex: '#4389ff',
+    hsl: {
+      h: 60,
+      s: 100,
+      l: 63,
+      a: 1,
+    },
+    hsv: {
+      h: 218,
+      s: 74,
+      v: 100,
+      a: 1,
+    },
+    rgba: {
+      r: 67,
+      g: 137,
+      b: 255,
+      a: 1,
+    },
+    a: 1,
+  };
+
   export default {
     /**
      * The name of the component.
@@ -348,14 +439,232 @@
      */
     computed: {
     },
+    created() {
+      function encodeToColorPickerObject() {
+        if (this.controlBar.volumeControl.color &&
+          typeof this.controlBar.volumeControl.color === 'string') {
+          if (this.controlBar.volumeControl.color.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.controlBar.volumeControl.color);
+            this.controlBar.volumeControl.color = { hex: hexcode };
+            window.baseSkinInstance.controlBar.volumeControl.color =
+              this.controlBar.volumeControl.color;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.controlBar.volumeControl.color);
+            this.controlBar.volumeControl.color = { hex: hexcode };
+            window.baseSkinInstance.controlBar.volumeControl.color =
+              this.controlBar.volumeControl.color;
+          }
+        }
+        if (this.controlBar.iconStyle.active.color &&
+          typeof this.controlBar.iconStyle.active.color === 'string') {
+          if (this.controlBar.iconStyle.active.color.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.controlBar.iconStyle.active.color);
+            this.controlBar.iconStyle.active.color = { hex: hexcode };
+            window.baseSkinInstance.controlBar.iconStyle.active.color =
+              this.controlBar.iconStyle.active.color;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.controlBar.iconStyle.active.color);
+            this.controlBar.iconStyle.active.color = { hex: hexcode };
+            window.baseSkinInstance.controlBar.iconStyle.active.color =
+              this.controlBar.iconStyle.active.color;
+          }
+        }
+        if (this.controlBar.iconStyle.inactive.color &&
+          typeof this.controlBar.iconStyle.inactive.color === 'string') {
+          if (this.controlBar.iconStyle.inactive.color.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.controlBar.iconStyle.inactive.color);
+            this.controlBar.iconStyle.inactive.color = { hex: hexcode };
+            window.baseSkinInstance.controlBar.iconStyle.inactive.color =
+              this.controlBar.iconStyle.inactive.color;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.controlBar.iconStyle.inactive.color);
+            this.controlBar.iconStyle.inactive.color = { hex: hexcode };
+            window.baseSkinInstance.controlBar.iconStyle.inactive.color =
+              this.controlBar.iconStyle.inactive.color;
+          }
+        }
+        if (this.controlBar.adScrubberBar.backgroundColor &&
+          typeof this.controlBar.adScrubberBar.backgroundColor === 'string') {
+          if (this.controlBar.adScrubberBar.backgroundColor.includes('rgb')) {
+            console.log('else bgcolor');
+            const hexcode = ColorCode.rgbToHex(
+              this.controlBar.adScrubberBar.backgroundColor);
+            this.controlBar.adScrubberBar.backgroundColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.adScrubberBar.backgroundColor =
+              this.controlBar.adScrubberBar.backgroundColor;
+            console.log(this.controlBar.adScrubberBar.backgroundColor);
+          } else {
+            console.log('else bgcolor');
+            const hexcode = ColorCode.colourNameToHex(
+              this.controlBar.adScrubberBar.backgroundColor);
+            this.controlBar.adScrubberBar.backgroundColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.adScrubberBar.backgroundColor =
+              this.controlBar.adScrubberBar.backgroundColor;
+            console.log(this.controlBar.adScrubberBar.backgroundColor);
+          }
+        }
+        if (this.controlBar.adScrubberBar.bufferedColor &&
+          typeof this.controlBar.adScrubberBar.bufferedColor === 'string') {
+          if (this.controlBar.adScrubberBar.bufferedColor.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.controlBar.adScrubberBar.bufferedColor);
+            this.controlBar.adScrubberBar.bufferedColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.adScrubberBar.bufferedColor =
+              this.controlBar.adScrubberBar.bufferedColor;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.controlBar.adScrubberBar.bufferedColor);
+            this.controlBar.adScrubberBar.bufferedColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.adScrubberBar.bufferedColor =
+              this.controlBar.adScrubberBar.bufferedColor;
+          }
+        }
+        if (this.controlBar.adScrubberBar.playedColor &&
+          typeof this.controlBar.adScrubberBar.playedColor === 'string') {
+          if (this.controlBar.adScrubberBar.playedColor.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.controlBar.adScrubberBar.playedColor);
+            this.controlBar.adScrubberBar.playedColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.adScrubberBar.playedColor =
+              this.controlBar.adScrubberBar.playedColor;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.controlBar.adScrubberBar.playedColor);
+            this.controlBar.adScrubberBar.playedColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.adScrubberBar.playedColor =
+              this.controlBar.adScrubberBar.playedColor;
+          }
+        }
+        if (this.controlBar.adScrubberBar.scrubberHandleColor &&
+          typeof this.controlBar.adScrubberBar.scrubberHandleColor === 'string') {
+          if (this.controlBar.adScrubberBar.scrubberHandleColor.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.controlBar.adScrubberBar.scrubberHandleColor);
+            this.controlBar.adScrubberBar.scrubberHandleColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.adScrubberBar.scrubberHandleColor =
+              this.controlBar.adScrubberBar.scrubberHandleColor;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.controlBar.adScrubberBar.scrubberHandleColor);
+            this.controlBar.adScrubberBar.scrubberHandleColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.adScrubberBar.scrubberHandleColor =
+              this.controlBar.adScrubberBar.scrubberHandleColor;
+          }
+        }
+        if (this.controlBar.adScrubberBar.scrubberHandleBorderColor &&
+          typeof this.controlBar.adScrubberBar.scrubberHandleBorderColor === 'string') {
+          if (this.controlBar.adScrubberBar.scrubberHandleBorderColor.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.controlBar.adScrubberBar.scrubberHandleBorderColor);
+            this.controlBar.adScrubberBar.scrubberHandleBorderColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.adScrubberBar.scrubberHandleBorderColor =
+              this.controlBar.adScrubberBar.scrubberHandleBorderColor;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.controlBar.adScrubberBar.scrubberHandleBorderColor);
+            this.controlBar.adScrubberBar.scrubberHandleBorderColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.adScrubberBar.scrubberHandleBorderColor =
+              this.controlBar.adScrubberBar.scrubberHandleBorderColor;
+          }
+        }
+        if (this.controlBar.scrubberBar.backgroundColor &&
+          typeof this.controlBar.scrubberBar.backgroundColor === 'string') {
+          if (this.controlBar.scrubberBar.backgroundColor.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.controlBar.scrubberBar.backgroundColor);
+            this.controlBar.scrubberBar.backgroundColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.scrubberBar.backgroundColor =
+              this.controlBar.scrubberBar.backgroundColor;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.controlBar.scrubberBar.backgroundColor);
+            this.controlBar.scrubberBar.backgroundColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.scrubberBar.backgroundColor =
+              this.controlBar.scrubberBar.backgroundColor;
+          }
+        }
+        if (this.controlBar.scrubberBar.bufferedColor &&
+          typeof this.controlBar.scrubberBar.bufferedColor === 'string') {
+          if (this.controlBar.scrubberBar.bufferedColor.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.controlBar.scrubberBar.bufferedColor);
+            this.controlBar.scrubberBar.bufferedColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.scrubberBar.bufferedColor =
+              this.controlBar.scrubberBar.bufferedColor;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.controlBar.scrubberBar.bufferedColor);
+            this.controlBar.scrubberBar.bufferedColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.scrubberBar.bufferedColor =
+              this.controlBar.scrubberBar.bufferedColor;
+          }
+        }
+        if (this.controlBar.scrubberBar.playedColor &&
+          typeof this.controlBar.scrubberBar.playedColor === 'string') {
+          if (this.controlBar.scrubberBar.playedColor.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.controlBar.scrubberBar.playedColor);
+            this.controlBar.scrubberBar.playedColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.scrubberBar.playedColor =
+              this.controlBar.scrubberBar.playedColor;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.controlBar.scrubberBar.playedColor);
+            this.controlBar.scrubberBar.playedColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.scrubberBar.playedColor =
+              this.controlBar.scrubberBar.playedColor;
+          }
+        }
+        if (this.controlBar.scrubberBar.scrubberHandleColor &&
+          typeof this.controlBar.scrubberBar.scrubberHandleColor === 'string') {
+          if (this.controlBar.scrubberBar.scrubberHandleColor.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.controlBar.scrubberBar.scrubberHandleColor);
+            this.controlBar.scrubberBar.scrubberHandleColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.scrubberBar.scrubberHandleColor =
+              this.controlBar.scrubberBar.scrubberHandleColor;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.controlBar.scrubberBar.scrubberHandleColor);
+            this.controlBar.scrubberBar.scrubberHandleColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.scrubberBar.scrubberHandleColor =
+              this.controlBar.scrubberBar.scrubberHandleColor;
+          }
+        }
+        if (this.controlBar.scrubberBar.scrubberHandleBorderColor &&
+          typeof this.controlBar.scrubberBar.scrubberHandleBorderColor === 'string') {
+          if (this.controlBar.scrubberBar.scrubberHandleBorderColor.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.controlBar.scrubberBar.scrubberHandleBorderColor);
+            this.controlBar.scrubberBar.scrubberHandleBorderColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.scrubberBar.scrubberHandleBorderColor =
+              this.controlBar.scrubberBar.scrubberHandleBorderColor;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.controlBar.scrubberBar.scrubberHandleBorderColor);
+            this.controlBar.scrubberBar.scrubberHandleBorderColor = { hex: hexcode };
+            window.baseSkinInstance.controlBar.scrubberBar.scrubberHandleBorderColor =
+              this.controlBar.scrubberBar.scrubberHandleBorderColor;
+          }
+        }
+      }
+      EventBus.$on('skin-loaded', () => {
+        console.log('skin-loaded event fired 2');
+        this.controlBar = window.baseSkinInstance.controlBar;
+
+        encodeToColorPickerObject.call(this);
+      });
+    },
     components: {
       'photoshop-picker': Photoshop,
       vueSlider,
       VueNumeric,
-    },
-    created() {
-      this.convertScrubberBarColorForColorPicker();
-      this.convertAdScrubberBarColorForColorPicker();
     },
     data() {
       return {
@@ -387,18 +696,18 @@
             height: 24,
           },
           adScrubberBar: {
-            backgroundColor: 'rgba(175,175,175,1)',
-            bufferedColor: 'rgba(127,127,127,1)',
-            playedColor: 'rgba(255,63,128,1)',
-            scrubberHandleColor: 'rgba(67,137,255,1)',
-            scrubberHandleBorderColor: 'rgba(255,255,255,1)',
+            backgroundColor: defaultbgColor,
+            bufferedColor: defaultbufferedColor,
+            playedColor: defaultplayedColor,
+            scrubberHandleColor: defaultsbHandleColor,
+            scrubberHandleBorderColor: defaultWhiteColor,
           },
           scrubberBar: {
-            backgroundColor: 'rgba(175,175,175,0.5)',
-            bufferedColor: 'rgba(175,175,175,0.7)',
-            playedColor: '',
-            scrubberHandleColor: 'rgba(67,137,255,1)',
-            scrubberHandleBorderColor: 'rgba(255,255,255,1)',
+            backgroundColor: defaultbgColor,
+            bufferedColor: defaultbufferedColor,
+            playedColor: defaultplayedColor,
+            scrubberHandleColor: defaultsbHandleColor,
+            scrubberHandleBorderColor: defaultWhiteColor,
             thumbnailPreview: true,
           },
           tooltips: {
@@ -427,7 +736,7 @@
             this.showvolumeControlColorPicker = false;
             break;
           case 'iconactivecolor':
-            this.showPlayIconColorPicker = false;
+            this.showIconActiveColorPicker = false;
             break;
           case 'iconInactivecolor':
             this.showIconInactiveColorPicker = false;
@@ -472,7 +781,7 @@
             this.showvolumeControlColorPicker = false;
             break;
           case 'iconactivecolor':
-            this.showPlayIconColorPicker = false;
+            this.showIconActiveColorPicker = false;
             break;
           case 'iconInactivecolor':
             this.showIconInactiveColorPicker = false;
@@ -517,7 +826,7 @@
             this.showvolumeControlColorPicker = true;
             break;
           case 'iconactivecolor':
-            this.showPlayIconColorPicker = true;
+            this.showIconActiveColorPicker = true;
             break;
           case 'iconInactivecolor':
             this.showIconInactiveColorPicker = true;
@@ -554,88 +863,6 @@
             break;
           default:
             console.log('unkfalsewn ui obj');
-        }
-      },
-      convertScrubberBarColorForColorPicker() {
-        if (this.controlBar.scrubberBar.backgroundColor.includes('rgb')) {
-          this.controlBar.scrubberBar.backgroundColor = ColorCode
-            .rgbToHex(this.controlBar.scrubberBar.backgroundColor);
-        } else {
-          this.controlBar.scrubberBar.backgroundColor = ColorCode
-            .colourNameToHex(this.controlBar.scrubberBar.backgroundColor);
-        }
-
-        if (this.controlBar.scrubberBar.bufferedColor.includes('rgb')) {
-          this.controlBar.scrubberBar.bufferedColor = ColorCode
-            .rgbToHex(this.controlBar.scrubberBar.bufferedColor);
-        } else {
-          this.controlBar.scrubberBar.bufferedColor = ColorCode
-            .colourNameToHex(this.controlBar.scrubberBar.bufferedColor);
-        }
-
-        if (this.controlBar.scrubberBar.playedColor.includes('rgb')) {
-          this.controlBar.scrubberBar.playedColor = ColorCode
-            .rgbToHex(this.controlBar.scrubberBar.playedColor);
-        } else {
-          this.controlBar.scrubberBar.playedColor = ColorCode
-            .colourNameToHex(this.controlBar.scrubberBar.playedColor);
-        }
-
-        if (this.controlBar.scrubberBar.scrubberHandleColor.includes('rgb')) {
-          this.controlBar.scrubberBar.scrubberHandleColor = ColorCode
-            .rgbToHex(this.controlBar.scrubberBar.scrubberHandleColor);
-        } else {
-          this.controlBar.scrubberBar.scrubberHandleColor = ColorCode
-            .colourNameToHex(this.controlBar.scrubberBar.scrubberHandleColor);
-        }
-
-        if (this.controlBar.scrubberBar.scrubberHandleBorderColor.includes('rgb')) {
-          this.controlBar.scrubberBar.scrubberHandleBorderColor = ColorCode
-            .rgbToHex(this.controlBar.scrubberBar.scrubberHandleBorderColor);
-        } else {
-          this.controlBar.scrubberBar.scrubberHandleBorderColor = ColorCode
-            .colourNameToHex(this.controlBar.scrubberBar.scrubberHandleBorderColor);
-        }
-      },
-      convertAdScrubberBarColorForColorPicker() {
-        if (this.controlBar.adScrubberBar.backgroundColor.includes('rgb')) {
-          this.controlBar.adScrubberBar.backgroundColor = ColorCode
-            .rgbToHex(this.controlBar.adScrubberBar.backgroundColor);
-        } else {
-          this.controlBar.adScrubberBar.backgroundColor = ColorCode
-            .colourNameToHex(this.controlBar.adScrubberBar.backgroundColor);
-        }
-
-        if (this.controlBar.adScrubberBar.bufferedColor.includes('rgb')) {
-          this.controlBar.adScrubberBar.bufferedColor = ColorCode
-            .rgbToHex(this.controlBar.adScrubberBar.bufferedColor);
-        } else {
-          this.controlBar.adScrubberBar.bufferedColor = ColorCode
-            .colourNameToHex(this.controlBar.adScrubberBar.bufferedColor);
-        }
-
-        if (this.controlBar.adScrubberBar.playedColor.includes('rgb')) {
-          this.controlBar.adScrubberBar.playedColor = ColorCode
-            .rgbToHex(this.controlBar.adScrubberBar.playedColor);
-        } else {
-          this.controlBar.adScrubberBar.playedColor = ColorCode
-            .colourNameToHex(this.controlBar.adScrubberBar.playedColor);
-        }
-
-        if (this.controlBar.adScrubberBar.scrubberHandleColor.includes('rgb')) {
-          this.controlBar.adScrubberBar.scrubberHandleColor = ColorCode
-            .rgbToHex(this.controlBar.adScrubberBar.scrubberHandleColor);
-        } else {
-          this.controlBar.adScrubberBar.scrubberHandleColor = ColorCode
-            .colourNameToHex(this.controlBar.adScrubberBar.scrubberHandleColor);
-        }
-
-        if (this.controlBar.adScrubberBar.scrubberHandleBorderColor.includes('rgb')) {
-          this.controlBar.adScrubberBar.scrubberHandleBorderColor = ColorCode
-            .rgbToHex(this.controlBar.adScrubberBar.scrubberHandleBorderColor);
-        } else {
-          this.controlBar.adScrubberBar.scrubberHandleBorderColor = ColorCode
-            .colourNameToHex(this.controlBar.adScrubberBar.scrubberHandleBorderColor);
         }
       },
     },

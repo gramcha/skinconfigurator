@@ -107,6 +107,8 @@
   import SlotMixin from '@/mixins/slot';
   import { Photoshop } from 'vue-color';
   import VueNumeric from 'vue-numeric';
+  import EventBus from '@/GlobelEventBus/EventBus';
+  import ColorCode from '@/utils/ColorCode';
 
   const defaultBlackColor = {
     hex: '#000000',
@@ -180,6 +182,64 @@
      * The computed properties that the component can use.
      */
     computed: {},
+    created() {
+      function encodeToColorPickerObject() {
+        if (this.closedCaptionOptions.textColor &&
+          typeof this.closedCaptionOptions.textColor === 'string') {
+          if (this.closedCaptionOptions.textColor.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.closedCaptionOptions.textColor);
+            this.closedCaptionOptions.textColor = { hex: hexcode };
+            window.baseSkinInstance.closedCaptionOptions.textColor =
+              this.closedCaptionOptions.textColor;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.closedCaptionOptions.textColor);
+            this.closedCaptionOptions.textColor = { hex: hexcode };
+            window.baseSkinInstance.closedCaptionOptions.textColor =
+              this.closedCaptionOptions.textColor;
+          }
+        }
+        if (this.closedCaptionOptions.windowColor &&
+          typeof this.closedCaptionOptions.windowColor === 'string') {
+          if (this.closedCaptionOptions.windowColor.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.closedCaptionOptions.windowColor);
+            this.closedCaptionOptions.windowColor = { hex: hexcode };
+            window.baseSkinInstance.closedCaptionOptions.windowColor =
+              this.closedCaptionOptions.windowColor;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.closedCaptionOptions.windowColor);
+            this.closedCaptionOptions.windowColor = { hex: hexcode };
+            window.baseSkinInstance.closedCaptionOptions.windowColor =
+              this.closedCaptionOptions.windowColor;
+          }
+        }
+        if (this.closedCaptionOptions.backgroundColor &&
+          typeof this.closedCaptionOptions.backgroundColor === 'string') {
+          if (this.closedCaptionOptions.backgroundColor.includes('rgb')) {
+            const hexcode = ColorCode.rgbToHex(
+              this.closedCaptionOptions.backgroundColor);
+            this.closedCaptionOptions.backgroundColor = { hex: hexcode };
+            window.baseSkinInstance.closedCaptionOptions.backgroundColor =
+              this.closedCaptionOptions.backgroundColor;
+          } else {
+            const hexcode = ColorCode.colourNameToHex(
+              this.closedCaptionOptions.backgroundColor);
+            this.closedCaptionOptions.backgroundColor = { hex: hexcode };
+            window.baseSkinInstance.closedCaptionOptions.backgroundColor =
+              this.closedCaptionOptions.backgroundColor;
+          }
+        }
+      }
+      EventBus.$on('skin-loaded', () => {
+        console.log('skin-loaded event fired 2');
+        this.closedCaptionOptions = window.baseSkinInstance.closedCaptionOptions;
+
+        encodeToColorPickerObject.call(this);
+      });
+    },
     components: {
       'photoshop-picker': Photoshop,
       VueNumeric,
