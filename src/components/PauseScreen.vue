@@ -169,9 +169,7 @@
         }
       }
       EventBus.$on('skin-loaded', () => {
-        console.log('skin-loaded event fired 2');
         this.pauseScreen = window.baseSkinInstance.pauseScreen;
-
         encodeToColorPickerObject.call(this);
       });
     },

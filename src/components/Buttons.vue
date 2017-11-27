@@ -178,14 +178,13 @@
      * The computed properties that the component can use.
      */
     computed: {},
-    components: {
-      VueNumeric,
-    },
     created() {
       EventBus.$on('skin-loaded', () => {
-        console.log('skin-loaded event fired');
         this.buttons = window.baseSkinInstance.buttons;
       });
+    },
+    components: {
+      VueNumeric,
     },
     mounted() {
 //      this.button = window.baseSkinInstance.buttons;

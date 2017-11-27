@@ -268,9 +268,7 @@
       }
 
       EventBus.$on('skin-loaded', () => {
-        console.log('skin-loaded event fired');
         this.startScreen = window.baseSkinInstance.startScreen;
-
         encodeToColorPickerObject.call(this);
       });
     },

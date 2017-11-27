@@ -176,9 +176,7 @@
         }
       }
       EventBus.$on('skin-loaded', () => {
-        console.log('skin-loaded event fired 2');
         this.discoveryScreen = window.baseSkinInstance.discoveryScreen;
-
         encodeToColorPickerObject.call(this);
       });
     },
@@ -205,8 +203,6 @@
           showCountDownTimerOnEndScreen: true,
           countDownTime: 10,
         },
-        colorsPanelTitle: defaultWhiteColor,
-        colorsContentFont: defaultWhiteColor,
         showPaneltitleFontColorPicker: false,
         showContentFontColorPicker: false,
         checkedshowCountDownTimerOnEndScreen: true,

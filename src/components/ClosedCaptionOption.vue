@@ -234,9 +234,7 @@
         }
       }
       EventBus.$on('skin-loaded', () => {
-        console.log('skin-loaded event fired 2');
         this.closedCaptionOptions = window.baseSkinInstance.closedCaptionOptions;
-
         encodeToColorPickerObject.call(this);
       });
     },

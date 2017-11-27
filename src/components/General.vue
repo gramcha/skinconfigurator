@@ -127,7 +127,7 @@
   //  }
   import SlotMixin from '@/mixins/slot';
   import VueNumeric from 'vue-numeric';
-
+  import EventBus from '@/GlobelEventBus/EventBus';
 
   export default {
     /**
@@ -156,6 +156,11 @@
      * The computed properties that the component can use.
      */
     computed: {},
+    created() {
+      EventBus.$on('skin-loaded', () => {
+        this.general = window.baseSkinInstance.general;
+      });
+    },
     components: {
       VueNumeric,
     },

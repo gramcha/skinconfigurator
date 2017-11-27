@@ -2,20 +2,19 @@
   <div id="homePanel" class="panel panel-default">
     <div class="panel-body form-horizontal ">
       <div class="form-group">
-        <label >Base Skin config</label>
-        <br>
+        <!--<label>Copy & Paste base skin.json for start configuring.</label>-->
+        <!--<br>-->
         <span>
-          <textarea v-model="baseSkin" placeholder="add skin.json" style="width: 500px; height: 400px"></textarea>
+          <textarea v-model="baseSkin" placeholder="Copy & Paste base skin.json to start configuring." style="width: 90%; height: 400px"></textarea>
         </span>
         <br>
         <button v-on:click="updateBaseSkin">Load</button>
       </div>
 
-      <div class="form-group">
-        <label >Update Player</label>
-        <br>
-        <button v-on:click="updatePlayer">Update Player</button>
-      </div>
+      <!--<div class="form-group">-->
+        <!--<br>-->
+        <!--<button v-on:click="updatePlayer">Update Player</button>-->
+      <!--</div>-->
     </div>
   </div>
 </template>
@@ -27,7 +26,9 @@
   import EventBus from '@/GlobelEventBus/EventBus';
 
   const postJSON = function (urlpath, data) {
-    return $.ajax({ url: urlpath, data: JSON.stringify(data), type: 'POST', contentType: 'application/json' });
+    return $.ajax({
+      url: urlpath, data: JSON.stringify(data), type: 'POST', contentType: 'application/json',
+    });
   };
   export default {
     /**
@@ -55,10 +56,8 @@
     /**
      * The computed properties that the component can use.
      */
-    computed: {
-    },
-    components: {
-    },
+    computed: {},
+    components: {},
     data() {
       return {
         baseSkin: null,
@@ -78,6 +77,11 @@
         postJSON('http://localhost:3000/updateplayer/', window.baseSkinInstance)
           .done((data) => {
 //            do something useful with server returned data
+            if (window.recreatePlayer) {
+              console.log('recreating');
+              window.convertedSkin = data;
+              window.recreatePlayer();
+            }
             console.log(data);
           })
           .fail((response, status) => {

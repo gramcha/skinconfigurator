@@ -55,7 +55,7 @@
   import SlotMixin from '@/mixins/slot';
   import { Photoshop } from 'vue-color';
   import vueSlider from 'vue-slider-component';
-
+  import EventBus from '@/GlobelEventBus/EventBus';
 
   export default {
     /**
@@ -84,6 +84,11 @@
      * The computed properties that the component can use.
      */
     computed: {
+    },
+    created() {
+      EventBus.$on('skin-loaded', () => {
+        this.shareScreen = window.baseSkinInstance.shareScreen;
+      });
     },
     components: {
       'photoshop-picker': Photoshop,

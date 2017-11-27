@@ -2,75 +2,84 @@
   <!--<div id="app">-->
     <!--<router-view></router-view>-->
   <div>
-    <tabs>
-      <tab name="Home">
-        <home></home>
-      </tab>
-      <tab name="Generic">
-        <tabs name="genric sub">
-          <tab name="General">
-            <general></general>
-          </tab>
-          <tab name="Localization">
-            <localization></localization>
-          </tab>
-          <tab name="Responsive">
-            <responsive></responsive>
-          </tab>
-          <tab name="Closed Captions">
-            <closed-caption-option></closed-caption-option>
-          </tab>
-          <tab name="Up Next">
-            <up-next></up-next>
-          </tab>
-          <tab name="Live">
-            <live></live>
-          </tab>
-        </tabs>
-      </tab>
-      <tab name="Screens">
-        <tabs name="sub screens">
-          <tab name="Start">
-            <div>
-              <start-screen></start-screen>
-            </div>
-          </tab>
-          <tab name="Pause">
-            <pause-screen></pause-screen>
-          </tab>
-          <tab name="End">
-            <end-screen></end-screen>
-          </tab>
-          <tab name="Ad">
-            <ad-screen></ad-screen>
-          </tab>
-          <tab name="Discovery">
-            <discovery-screen></discovery-screen>
-          </tab>
-          <tab name="Share">
-            <share-screen></share-screen>
-          </tab>
-          <tab name="More Options">
-            <more-options-screen></more-options-screen>
-          </tab>
-        </tabs>
-      </tab>
-      <tab name="ControlBar">
-        <control-bar></control-bar>
-      </tab>
-      <tab name="Buttons & Icons">
-        <tabs name="sub buttons and icons">
-          <tab name="Buttons">
-            <buttons></buttons>
-          </tab>
-          <tab name="Icons">
-            <icons></icons>
-          </tab>
-        </tabs>
-      </tab>
+    <!--<div class="jumbotron_modified">-->
+      <!--<div class="container">-->
+        <!--<h2>Ooyala Player Skin Configurator</h2>-->
+        <!--<p>Welcome! Configure our new player skin below. This page allows you to modify the player skin and download skin.json output.</p>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div>
+      <tabs>
+        <tab name="Home">
+          <home></home>
+        </tab>
+        <tab name="Generic">
+          <tabs name="genric sub">
+            <tab name="General">
+              <general></general>
+            </tab>
+            <tab name="Localization">
+              <localization></localization>
+            </tab>
+            <tab name="Responsive">
+              <responsive></responsive>
+            </tab>
+            <tab name="Closed Captions">
+              <closed-caption-option></closed-caption-option>
+            </tab>
+            <tab name="Up Next">
+              <up-next></up-next>
+            </tab>
+            <tab name="Live">
+              <live></live>
+            </tab>
+          </tabs>
+        </tab>
+        <tab name="Screens">
+          <tabs name="sub screens">
+            <tab name="Start">
+              <div>
+                <start-screen></start-screen>
+              </div>
+            </tab>
+            <tab name="Pause">
+              <pause-screen></pause-screen>
+            </tab>
+            <tab name="End">
+              <end-screen></end-screen>
+            </tab>
+            <tab name="Ad">
+              <ad-screen></ad-screen>
+            </tab>
+            <tab name="Discovery">
+              <discovery-screen></discovery-screen>
+            </tab>
+            <tab name="Share">
+              <share-screen></share-screen>
+            </tab>
+            <tab name="More Options">
+              <more-options-screen></more-options-screen>
+            </tab>
+          </tabs>
+        </tab>
+        <tab name="ControlBar">
+          <control-bar></control-bar>
+        </tab>
+        <tab name="Buttons & Icons">
+          <tabs name="sub buttons and icons">
+            <tab name="Buttons">
+              <buttons></buttons>
+            </tab>
+            <tab name="Icons">
+              <icons></icons>
+            </tab>
+          </tabs>
+        </tab>
 
-    </tabs>
+      </tabs>
+    </div>
   </div>
+
 
 
   <!--</div>-->

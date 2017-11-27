@@ -42,7 +42,7 @@
 <script>
   import SlotMixin from '@/mixins/slot';
   import vueSlider from 'vue-slider-component';
-
+  import EventBus from '@/GlobelEventBus/EventBus';
 
   export default {
     /**
@@ -71,6 +71,11 @@
      * The computed properties that the component can use.
      */
     computed: {},
+    created() {
+      EventBus.$on('skin-loaded', () => {
+        this.localization = window.baseSkinInstance.localization;
+      });
+    },
     components: {
       vueSlider,
     },

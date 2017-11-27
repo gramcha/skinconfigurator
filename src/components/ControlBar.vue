@@ -655,9 +655,7 @@
         }
       }
       EventBus.$on('skin-loaded', () => {
-        console.log('skin-loaded event fired 2');
         this.controlBar = window.baseSkinInstance.controlBar;
-
         encodeToColorPickerObject.call(this);
       });
     },

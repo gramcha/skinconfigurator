@@ -18,6 +18,7 @@
 <script>
 
   import SlotMixin from '@/mixins/slot';
+  import EventBus from '@/GlobelEventBus/EventBus';
 
   export default {
     /**
@@ -46,6 +47,11 @@
      * The computed properties that the component can use.
      */
     computed: {
+    },
+    created() {
+      EventBus.$on('skin-loaded', () => {
+        this.live = window.baseSkinInstance.live;
+      });
     },
     components: {
     },

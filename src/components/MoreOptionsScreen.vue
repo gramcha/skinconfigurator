@@ -191,9 +191,7 @@
         }
       }
       EventBus.$on('skin-loaded', () => {
-        console.log('skin-loaded event fired 2');
         this.moreOptionsScreen = window.baseSkinInstance.moreOptionsScreen;
-
         encodeToColorPickerObject.call(this);
       });
     },
