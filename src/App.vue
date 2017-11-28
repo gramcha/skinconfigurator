@@ -14,28 +14,6 @@
         <tab name="Home">
           <home></home>
         </tab>
-        <tab name="Generic">
-          <tabs name="genric sub">
-            <tab name="General">
-              <general></general>
-            </tab>
-            <tab name="Localization">
-              <localization></localization>
-            </tab>
-            <tab name="Responsive">
-              <responsive></responsive>
-            </tab>
-            <tab name="Closed Captions">
-              <closed-caption-option></closed-caption-option>
-            </tab>
-            <tab name="Up Next">
-              <up-next></up-next>
-            </tab>
-            <tab name="Live">
-              <live></live>
-            </tab>
-          </tabs>
-        </tab>
         <tab name="Screens">
           <tabs name="sub screens">
             <tab name="Start">
@@ -60,6 +38,28 @@
             </tab>
             <tab name="More Options">
               <more-options-screen></more-options-screen>
+            </tab>
+          </tabs>
+        </tab>
+        <tab name="Generic">
+          <tabs name="genric sub">
+            <tab name="General">
+              <general></general>
+            </tab>
+            <tab name="Localization">
+              <localization></localization>
+            </tab>
+            <tab name="Responsive">
+              <responsive></responsive>
+            </tab>
+            <tab name="Closed Captions">
+              <closed-caption-option></closed-caption-option>
+            </tab>
+            <tab name="Up Next">
+              <up-next></up-next>
+            </tab>
+            <tab name="Live">
+              <live></live>
             </tab>
           </tabs>
         </tab>
