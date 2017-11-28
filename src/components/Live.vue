@@ -3,6 +3,7 @@
     <div class="panel-body form-horizontal ">
       <div class="form-group">
         <label >Force the Scrubber bar to be hidden during live streams, regardless of if DVR is available</label>
+        <br>
         <span class="col-sm-6">
           <input type="checkbox"
                  v-model="live.forceDvrDisabled"
