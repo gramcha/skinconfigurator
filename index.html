@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8'>
-  <title>skin-configurator</title>
+  <title>skin-configurator1</title>
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
   <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=' crossorigin='anonymous'></script>
   <script src='http://player.ooyala.com/static/v4/candidate/latest/core.js'></script>
@@ -13,36 +13,66 @@
   <link rel='stylesheet' href='http://player.ooyala.com/static/v4/candidate/latest/skin-plugin/html5-skin.min.css'/>
   <link href='static/tabs-component.css' rel='stylesheet'>
   <style>
-    .sticky {
-      position: fixed;
-      top: 0;
-      width: 100%
-    }
-    #wrapper {
-      margin-right: 200px;
-    }
 
-    #content {
-      float: left;
-      width: 60%;
-      /*background-color: #CCF;*/
-    }
+    /*#wrapper {*/
+      /*margin-right: 200px;*/
+    /*}*/
 
-    #sidebar {
-      float: right;
-      width: 400px;
-      margin-right: -50px;
-      /*background-color: #FFA;*/
-    }
+    /*#content {*/
+      /*float: left;*/
+      /*width: 60%;*/
+      /*!*background-color: #CCF;*!*/
+    /*}*/
 
-    #cleared {
-      clear: both;
-    }
+    /*#sidebar {*/
+      /*float: right;*/
+      /*width: 400px;*/
+      /*margin-right: -50px;*/
+      /*!*background-color: #FFA;*!*/
+    /*}*/
+
+    /*#cleared {*/
+      /*clear: both;*/
+    /*}*/
     .jumbotron_modified {
       padding: 1rem 1rem;
-      margin-bottom: 1rem;
+      /*margin-bottom: 1rem;*/
       background-color: #e9ecef;
       border-radius: 0.3rem;
+    }
+
+    .wrapper {
+      border : 1px solid lightgrey;
+      overflow:hidden;
+    }
+
+    /*.wrapper div {*/
+    /*min-height: 200px;*/
+    /*padding: 10px;*/
+    /*}*/
+    #one {
+      /*background-color: gray;*/
+      float:left;
+      margin-right:20px;
+      width:60%;
+      border-right:1px solid lightgrey;
+    }
+    #two {
+      /*background-color: white;*/
+      overflow:hidden;
+      margin:10px;
+      border:2px dashed #ccc;
+      min-height:170px;
+    }
+
+    @media screen and (max-width: 400px) {
+      #one {
+        float: none;
+        margin-right:0;
+        width:auto;
+        border:0;
+        border-bottom:2px solid #000;
+      }
     }
   </style>
 </head>
@@ -53,22 +83,33 @@
     <p>Welcome! Configure our new player skin below. This page allows you to modify the player skin and download skin.json file.</p>
   </div>
 </div>
-<div id='wrapper'>
-  <div id='content'>
+<!--<div id='wrapper'>-->
+  <!--<div id='content'>-->
+    <!--<div id='app'></div>-->
+  <!--</div>-->
+  <!--<div id='sidebar'>-->
+    <!--<div id='container'></div>-->
+    <!--<div>-->
+      <!--<br>-->
+      <!--<button onclick='download()'>download</button>-->
+      <!--<button onclick='updatePlayer()'>Test Video</button>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div id='cleared'></div>-->
+<!--</div>-->
+
+<div class="wrapper">
+  <div id="one">
     <div id='app'></div>
   </div>
-  <div id='sidebar'>
-    <div id='container'></div>
-    <div>
-      <br>
-      <button onclick='download()'>download</button>
-      <button onclick='updatePlayer()'>Test Video</button>
-    </div>
+  <div id="two">
+    <div id="container" ></div>
+    <br>
+    <button onclick='download()'>download</button>
+    <button onclick='updatePlayer()'>Test Video</button>
   </div>
-  <div id='cleared'></div>
+
 </div>
-
-
 
 
 <script>
@@ -108,8 +149,12 @@
     onCreate: onCreate,
   };
   OO.ready(function () {
+//    window.pready = true;
     window.pp = OO.Player.create('container', 'RmZW4zcDo6KqkTIhn1LnowEZyUYn5Tb2', window.playerParam);
   });
+//  window.createPlayer = function () {
+//    window.pp = OO.Player.create('container', 'RmZW4zcDo6KqkTIhn1LnowEZyUYn5Tb2', window.playerParam);
+//  }
   function recreatePlayer() {
     if (window.pp) {
       window.pp.destroy();

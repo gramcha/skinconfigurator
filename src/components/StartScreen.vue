@@ -7,9 +7,9 @@
         <label class="control-label col-sm-4">Show Play Button</label>
         <span class="col-sm-6">
         <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
-          <input type="radio" id="showPlayButton" value="true" v-model="startScreen.showPlayButton">
+          <input type="radio" id="showPlayButton" value=true v-model="startScreen.showPlayButton">
           <label for="showPlayButton">true</label> &nbsp;
-          <input type="radio" id="hidePlayButton" value="false" v-model="startScreen.showPlayButton">
+          <input type="radio" id="hidePlayButton" value=false v-model="startScreen.showPlayButton">
           <label for="hidePlayButton">false</label>
         </span>
 
