@@ -33,29 +33,40 @@ window.recreatePlayer = function () {
   window.playerParam.skin.inline = window.convertedSkin;
   window.pp = OO.Player.create('container', 'RmZW4zcDo6KqkTIhn1LnowEZyUYn5Tb2', window.playerParam);
 };
-
-window.download = function () {
-  if (window.baseSkinInstance && window.convertedSkin) {
-    const a = window.document.createElement('a');
-    a.href = window.URL.createObjectURL(new Blob([JSON.stringify(window.convertedSkin)], {type: 'text/text'}));
-    a.download = 'skin.json';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
-}
 const postJSON = function (urlpath, data) {
   return $.ajax({
     url: urlpath, data: JSON.stringify(data), type: 'POST', contentType: 'application/json',
   });
 };
+window.download = function () {
+  if (window.baseSkinInstance) {
+    postJSON('http://localhost:3000/updateplayer/', window.baseSkinInstance)
+      .done((data) => {
+        window.convertedSkin = data;
+        const a = window.document.createElement('a');
+        a.href = window.URL.createObjectURL(new Blob([JSON.stringify(window.convertedSkin)], { type: 'text/text' }));
+        a.download = 'skin.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      })
+      .fail((response, status) => {
+        console.error(status);
+      })
+      .always(() => {
+
+      });
+  }
+
+}
+
 window.updatePlayer = function () {
   if (window.baseSkinInstance) {
     postJSON('http://localhost:3000/updateplayer/', window.baseSkinInstance)
       .done((data) => {
+        window.convertedSkin = data;
         if (window.recreatePlayer) {
           console.log('recreating');
-          window.convertedSkin = data;
           window.recreatePlayer();
         }
         console.log(data);

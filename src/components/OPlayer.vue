@@ -3,10 +3,10 @@
     <div class="panel-body form-horizontal ">
       <div id="container"></div>
       <br>
-      <button onclick='download()'  class="btn btn-success btn-lg" style="width: 100%">Download</button>
-      <br>
-      <br>
       <button onclick='updatePlayer()' class="btn btn-success btn-lg" style="width: 100%">Test Video</button>
+      <br>
+      <br>
+      <button onclick='download()'  class="btn btn-success btn-lg" style="width: 100%">Download</button>
     </div>
   </div>
 </template>
@@ -25,10 +25,11 @@
     name: 'OPlayer',
     methods: {
       download() {
+        window.updatePlayer(false);
         window.download();
       },
       updatePlayer() {
-        window.updatePlayer();
+        window.updatePlayer(true);
       },
     },
     mounted() {

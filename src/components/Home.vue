@@ -5,16 +5,16 @@
         <!--<label>Copy & Paste base skin.json for start configuring.</label>-->
         <!--<br>-->
         <span>
-          <textarea v-model="baseSkin" placeholder="Copy & Paste base skin.json to start configuring." style="width: 90%; height: 400px"></textarea>
+          <textarea v-model="baseSkin" placeholder="Copy & Paste base skin.json to start configuring." style="width: 100%; height: 400px"></textarea>
         </span>
         <br>
-        <button v-on:click="updateBaseSkin">Load</button>
+
       </div>
 
-      <!--<div class="form-group">-->
-        <!--<br>-->
-        <!--<button v-on:click="updatePlayer">Update Player</button>-->
-      <!--</div>-->
+      <div class="form-group">
+
+      <button v-on:click="updateBaseSkin" class="btn btn-success btn-lg" style="width: 100%">Load</button>
+      </div>
     </div>
   </div>
 </template>
