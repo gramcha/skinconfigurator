@@ -6,10 +6,11 @@
       <div class="form-group">
         <label class="control-label col-sm-4">Show Up Next</label>
         <span class="col-sm-6">
-          <input type="radio" id="ccEnabled" value="true" v-model="upNext.showUpNext">
-          <label for="ccEnabled">true</label> &nbsp;
-          <input type="radio" id="ccDisabled" value="false" v-model="upNext.showUpNext">
-          <label for="ccDisabled">false</label>
+          <input type="checkbox"
+                 v-model="upNext.showUpNext"
+                 :value="upNext.showUpNext"
+                 name="showUpNext" id="showUpNext">
+          <label for="showUpNext">{{upNext.showUpNext}}</label>
         </span>
         <br>
       </div>

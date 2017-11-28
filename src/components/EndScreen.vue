@@ -4,10 +4,11 @@
       <div class="form-group">
         <label class="control-label col-sm-4">Show Replay Button</label>
         <span class="col-sm-6">
-          <input type="radio" id="showReplayButton" value="true" v-model="endScreen.showReplayButton">
-          <label for="showReplayButton">true</label> &nbsp;
-          <input type="radio" id="hideReplayButton" value="false" v-model="endScreen.showReplayButton">
-          <label for="hideReplayButton">false</label>
+          <input type="checkbox"
+                 v-model="endScreen.showReplayButton"
+                 :value="endScreen.showReplayButton"
+                 name="showReplayButton" id="showReplayButton">
+          <label for="showReplayButton">{{endScreen.showReplayButton}}</label>
         </span>
         <br>
       </div>
@@ -38,11 +39,11 @@
         <label class="control-label col-sm-4">Show Title</label>
 
         <span class="col-sm-6">
-        <!--<input type="checkbox" id="showReplayButton" v-model="playButton">-->
-          <input type="radio" id="showTitle" value="true" v-model="endScreen.showTitle">
-          <label for="showTitle">true</label> &nbsp;
-          <input type="radio" id="hideTitle" value="false" v-model="endScreen.showTitle">
-          <label for="hideTitle">false</label>
+          <input type="checkbox"
+                 v-model="endScreen.showTitle"
+                 :value="endScreen.showTitle"
+                 name="showTitle" id="showTitleEnd">
+          <label for="showTitleEnd">{{endScreen.showTitle}}</label>
         </span>
         <br>
       </div>
@@ -50,11 +51,11 @@
         <label class="control-label col-sm-4">Show Description</label>
 
         <span class="col-sm-6">
-        <!--<input type="checkbox" id="showReplayButton" v-model="playButton">-->
-          <input type="radio" id="showDescription" value="true" v-model="endScreen.showDescription">
-          <label for="showDescription">true</label> &nbsp;
-          <input type="radio" id="hideDescription" value="false" v-model="endScreen.infoPanelPosition">
-          <label for="hideDescription">false</label>
+          <input type="checkbox"
+                 v-model="endScreen.showDescription"
+                 :value="endScreen.showDescription"
+                 name="showDescriptionEnd" id="showDescriptionEnd">
+          <label for="showDescriptionEnd">{{endScreen.showDescription}}</label>
         </span>
         <br>
       </div>

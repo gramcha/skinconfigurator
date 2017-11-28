@@ -56,10 +56,11 @@
       <div class="form-group">
         <label class="control-label col-sm-4">Auto Hide</label>
         <span class="col-sm-6">
-          <input type="radio" id="show" value="true" v-model="controlBar.autoHide">
-          <label for="show">true</label> &nbsp;
-          <input type="radio" id="hide" value="false" v-model="controlBar.autoHide">
-          <label for="hide">false</label>
+          <input type="checkbox"
+                 v-model="controlBar.autoHide"
+                 :value="controlBar.autoHide"
+                 name="autoHide" id="autoHide">
+          <label for="autoHide">{{controlBar.autoHide}}</label>
         </span>
         <br>
       </div>
@@ -244,10 +245,11 @@
         <div class="form-group">
           <label class="control-label col-sm-4">Thumbnail Preview</label>
           <span class="col-sm-6">
-          <input type="radio" id="showthumbnailPreview" value="true" v-model="controlBar.scrubberBar.thumbnailPreview">
-          <label for="showthumbnailPreview">true</label> &nbsp;
-          <input type="radio" id="hidethumbnailPreview" value="false" v-model="controlBar.scrubberBar.thumbnailPreview">
-          <label for="hidethumbnailPreview">false</label>
+            <input type="checkbox"
+                   v-model="controlBar.scrubberBar.thumbnailPreview"
+                   :value="controlBar.scrubberBar.thumbnailPreview"
+                   name="thumbnailPreview" id="thumbnailPreview">
+            <label for="thumbnailPreview">{{controlBar.scrubberBar.thumbnailPreview}}</label>
         </span>
 
           <br>
@@ -257,10 +259,11 @@
       <div class="form-group">
         <label class="control-label col-sm-4">Tooltips Enabled</label>
         <span class="col-sm-6">
-          <input type="radio" id="enabledtooltips" value="true" v-model="controlBar.tooltips.enabled">
-          <label for="enabledtooltips">true</label> &nbsp;
-          <input type="radio" id="disabledtooltips" value="false" v-model="controlBar.tooltips.enabled">
-          <label for="disabledtooltips">false</label>
+          <input type="checkbox"
+                 v-model="controlBar.tooltips.enabled"
+                 :value="controlBar.tooltips.enabled"
+                 name="tooltipsenabled" id="tooltipsenabled">
+          <label for="tooltipsenabled">{{controlBar.tooltips.enabled}}</label>
         </span>
         <br>
       </div>

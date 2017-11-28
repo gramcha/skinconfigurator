@@ -6,10 +6,11 @@
       <div class="form-group">
         <label class="control-label col-sm-4">Enabled</label>
         <span class="col-sm-6">
-          <input type="radio" id="ccEnabled" value="true" v-model="closedCaptionOptions.enabled">
-          <label for="ccEnabled">true</label> &nbsp;
-          <input type="radio" id="ccDisabled" value="false" v-model="closedCaptionOptions.enabled">
-          <label for="ccDisabled">false</label>
+          <input type="checkbox"
+                 v-model="closedCaptionOptions.enabled"
+                 :value="closedCaptionOptions.enabled"
+                 name="ccEnabled" id="ccEnabled">
+          <label for="ccEnabled">{{closedCaptionOptions.enabled}}</label>
         </span>
         <br>
       </div>

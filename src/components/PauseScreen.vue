@@ -4,10 +4,11 @@
       <div class="form-group">
         <label class="control-label col-sm-4">Show Pause Button</label>
         <span class="col-sm-6">
-          <input type="radio" id="showPauseButton" value="true" v-model="pauseScreen.showPauseIcon">
-          <label for="showPauseButton">true</label> &nbsp;
-          <input type="radio" id="hidePauseButton" value="false" v-model="pauseScreen.showPauseIcon">
-          <label for="hidePauseButton">false</label>
+          <input type="checkbox"
+                 v-model="pauseScreen.showPauseIcon"
+                 :value="pauseScreen.showPauseIcon"
+                 name="showPauseIcon" id="showPauseIcon">
+          <label for="showPauseIcon">{{pauseScreen.showPauseIcon}}</label>
         </span>
         <br>
       </div>
@@ -47,11 +48,11 @@
         <label class="control-label col-sm-4">Show Title</label>
 
         <span class="col-sm-6">
-        <!--<input type="checkbox" id="showPauseButton" v-model="playButton">-->
-          <input type="radio" id="showTitle" value="true" v-model="pauseScreen.showTitle">
-          <label for="showTitle">true</label> &nbsp;
-          <input type="radio" id="hideTitle" value="false" v-model="pauseScreen.showTitle">
-          <label for="hideTitle">false</label>
+          <input type="checkbox"
+                 v-model="pauseScreen.showTitle"
+                 :value="pauseScreen.showTitle"
+                 name="showTitle" id="showTitlepause">
+          <label for="showTitlepause">{{pauseScreen.showTitle}}</label>
         </span>
         <br>
       </div>
@@ -59,11 +60,11 @@
         <label class="control-label col-sm-4">Show Description</label>
 
         <span class="col-sm-6">
-        <!--<input type="checkbox" id="showPauseButton" v-model="playButton">-->
-          <input type="radio" id="showDescription" value="true" v-model="pauseScreen.showDescription">
-          <label for="showDescription">true</label> &nbsp;
-          <input type="radio" id="hideDescription" value="false" v-model="pauseScreen.showDescription">
-          <label for="hideDescription">false</label>
+          <input type="checkbox"
+                 v-model="pauseScreen.showDescription"
+                 :value="pauseScreen.showDescription"
+                 name="showDescription" id="showDescriptionpause">
+          <label for="showDescriptionpause">{{pauseScreen.showDescription}}</label>
         </span>
         <br>
       </div>

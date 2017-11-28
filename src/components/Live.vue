@@ -4,10 +4,11 @@
       <div class="form-group">
         <label >Force the Scrubber bar to be hidden during live streams, regardless of if DVR is available</label>
         <span class="col-sm-6">
-          <input type="radio" id="ccEnabled" value="true" v-model="live.forceDvrDisabled">
-          <label for="ccEnabled">true</label> &nbsp;
-          <input type="radio" id="ccDisabled" value="false" v-model="live.forceDvrDisabled">
-          <label for="ccDisabled">false</label>
+          <input type="checkbox"
+                 v-model="live.forceDvrDisabled"
+                 :value="live.forceDvrDisabled"
+                 name="forceDvrDisabled" id="forceDvrDisabled">
+          <label for="forceDvrDisabled">{{live.forceDvrDisabled}}</label>
         </span>
         <br>
       </div>

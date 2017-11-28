@@ -1,5 +1,5 @@
 <template>
-  <div id="homePanel" class="panel panel-default">
+  <div id="homePanel" class="panel panel-default" >
     <div class="panel-body form-horizontal ">
       <div class="form-group">
         <!--<label>Copy & Paste base skin.json for start configuring.</label>-->

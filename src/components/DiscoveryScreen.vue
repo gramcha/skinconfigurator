@@ -28,11 +28,11 @@
       <label class="control-label col-sm-4">Show Content Title</label>
 
       <span class="col-sm-6">
-        <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
-          <input type="radio" id="show" value="true" v-model="discoveryScreen.contentTitle.show">
-          <label for="show">true</label> &nbsp;
-          <input type="radio" id="hide" value="false" v-model="discoveryScreen.contentTitle.show">
-          <label for="hide">false</label>
+        <input type="checkbox"
+               v-model="discoveryScreen.contentTitle.show"
+               :value="discoveryScreen.contentTitle.show"
+               name="contentTitleshow" id="contentTitleshow">
+          <label for="contentTitleshow">{{discoveryScreen.contentTitle.show}}</label>
         </span>
       <br>
     </div>
@@ -63,11 +63,11 @@
       <label class="control-label col-sm-4">Show CountDown Timer On End Screen</label>
 
       <span class="col-sm-6">
-        <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
-          <input type="radio" id="showCountDown" value="true" v-model="discoveryScreen.showCountDownTimerOnEndScreen">
-          <label for="showCountDown">true</label> &nbsp;
-          <input type="radio" id="hideCountDown" value="false" v-model="discoveryScreen.showCountDownTimerOnEndScreen">
-          <label for="hideCountDown">false</label>
+        <input type="checkbox"
+               v-model="discoveryScreen.showCountDownTimerOnEndScreen"
+               :value="discoveryScreen.showCountDownTimerOnEndScreen"
+               name="showCountDownTimerOnEndScreen" id="showCountDownTimerOnEndScreen">
+          <label for="showCountDownTimerOnEndScreen">{{discoveryScreen.showCountDownTimerOnEndScreen}}</label>
         </span>
       <br>
     </div>

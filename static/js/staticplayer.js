@@ -20,7 +20,7 @@ window.createPlayer = function () {
 };
 
 OO.ready(() => {
-//    window.pready = true;
+  window.pready = true;
   window.createPlayer();
 });
 

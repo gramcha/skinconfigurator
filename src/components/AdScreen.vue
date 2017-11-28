@@ -4,10 +4,11 @@
       <div class="form-group">
         <label class="control-label col-sm-6">Show Ad Marquee</label>
         <span class="col-sm-6">
-          <input type="radio" id="showAdMarquee" value="true" v-model="adScreen.showAdMarquee">
-          <label for="showAdMarquee">true</label> &nbsp;
-          <input type="radio" id="hideAdMarquee" value="false" v-model="adScreen.showAdMarquee">
-          <label for="hideAdMarquee">false</label>
+          <input type="checkbox"
+                 v-model="adScreen.showAdMarquee"
+                 :value="adScreen.showAdMarquee"
+                 name="showAdMarquee" id="showAdMarquee">
+          <label for="showAdMarquee">{{adScreen.showAdMarquee}}</label>
         </span>
         <br>
       </div>
@@ -15,10 +16,11 @@
       <div class="form-group">
         <label class="control-label col-sm-6">Show Ad Countdown</label>
         <span class="col-sm-6">
-          <input type="radio" id="showAdCountdown" value="true" v-model="adScreen.showAdCountDown">
-          <label for="showAdMarquee">true</label> &nbsp;
-          <input type="radio" id="hideAdCountdown" value="false" v-model="adScreen.showAdCountDown">
-          <label for="hideAdMarquee">false</label>
+          <input type="checkbox"
+                 v-model="adScreen.showAdCountDown"
+                 :value="adScreen.showAdCountDown"
+                 name="showAdCountDown" id="showAdCountDown">
+          <label for="showAdCountDown">{{adScreen.showAdCountDown}}</label>
         </span>
         <br>
       </div>
@@ -26,10 +28,11 @@
       <div class="form-group">
         <label class="control-label col-sm-6">Show Control Bar</label>
         <span class="col-sm-6">
-          <input type="radio" id="showControlBar" value="true" v-model="adScreen.showControlBar">
-          <label for="showControlBar">true</label> &nbsp;
-          <input type="radio" id="hideControlBar" value="false" v-model="adScreen.showControlBar">
-          <label for="hideControlBar">false</label>
+          <input type="checkbox"
+                 v-model="adScreen.showControlBar"
+                 :value="adScreen.showControlBar"
+                 name="showControlBar" id="showControlBar">
+          <label for="showControlBar">{{adScreen.showControlBar}}</label>
         </span>
         <br>
       </div>

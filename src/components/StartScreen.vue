@@ -6,11 +6,11 @@
       <div class="form-group">
         <label class="control-label col-sm-4">Show Play Button</label>
         <span class="col-sm-6">
-        <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
-          <input type="radio" id="showPlayButton" value=true v-model="startScreen.showPlayButton">
-          <label for="showPlayButton">true</label> &nbsp;
-          <input type="radio" id="hidePlayButton" value=false v-model="startScreen.showPlayButton">
-          <label for="hidePlayButton">false</label>
+          <input type="checkbox"
+                 v-model="startScreen.showPlayButton"
+                 :value="startScreen.showPlayButton"
+                 name="showPlayButton" id="showPlayButton">
+          <label for="showPlayButton">{{startScreen.showPlayButton}}</label>
         </span>
 
         <br>
@@ -63,11 +63,11 @@
         <label class="control-label col-sm-4">Show Title</label>
 
         <span class="col-sm-6">
-        <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
-          <input type="radio" id="showTitle" value="true" v-model="startScreen.showTitle">
-          <label for="showTitle">true</label> &nbsp;
-          <input type="radio" id="hideTitle" value="false" v-model="startScreen.showTitle">
-          <label for="hideTitle">false</label>
+          <input type="checkbox"
+                 v-model="startScreen.showTitle"
+                 :value="startScreen.showTitle"
+                 name="showTitle" id="showTitle">
+          <label for="showTitle">{{startScreen.showTitle}}</label>
         </span>
         <br>
       </div>
@@ -75,11 +75,11 @@
         <label class="control-label col-sm-4">Show Description</label>
 
         <span class="col-sm-6">
-        <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
-          <input type="radio" id="showDescription" value="true" v-model="startScreen.showDescription">
-          <label for="showDescription">true</label> &nbsp;
-          <input type="radio" id="hideDescription" value="false" v-model="startScreen.showDescription">
-          <label for="hideDescription">false</label>
+          <input type="checkbox"
+                 v-model="startScreen.showDescription"
+                 :value="startScreen.showDescription"
+                 name="showDescription" id="showDescription">
+          <label for="showDescription">{{startScreen.showDescription}}</label>
         </span>
         <br>
       </div>
@@ -124,17 +124,15 @@
         <label class="control-label col-sm-4">Show Promo</label>
 
         <span class="col-sm-6">
-        <!--<input type="checkbox" id="showPlayButton" v-model="playButton">-->
-          <input type="radio" id="showPromo" value="true" v-model="startScreen.showPromo">
-          <label for="showPromo">true</label> &nbsp;
-          <input type="radio" id="hidePromo" value="false" v-model="startScreen.showPromo">
-          <label for="hidePromo">false</label>
+          <input type="checkbox"
+                 v-model="startScreen.showPromo"
+                 :value="startScreen.showPromo"
+                 name="showPromo" id="showPromo">
+          <label for="showPromo">{{startScreen.showPromo}}</label>
         </span>
         <br>
       </div>
     </div>
-
-
   </div>
 </template>
 <script>
