@@ -3,6 +3,8 @@
 
 > Developed using vue js  + node server.
 
+![alt text](https://github.com/gramcha/skinconfigurator/blob/master/screen.png)
+
 ## How to run?
 - `npm install`: It will install required packages.
 - `npm run start-prod`: It will start the server.
